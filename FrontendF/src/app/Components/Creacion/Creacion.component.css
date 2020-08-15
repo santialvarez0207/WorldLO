@@ -1,0 +1,14 @@
+
+        input:focus {
+            border-bottom: 1px solid #581845 !important;
+            box-shadow: 0 1px 0 0 #581845 !important;
+          }
+    
+          label.active {
+            color: #581845 !important;
+          }
+
+          textarea:focus {
+            border-bottom: 1px solid #581845 !important;
+            box-shadow: 0 1px 0 0 #581845 !important;
+          }

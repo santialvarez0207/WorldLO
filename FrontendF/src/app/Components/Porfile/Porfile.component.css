@@ -1,0 +1,22 @@
+.Cuestionario2{
+    display: inline-block;
+    position: relative;
+    left: 12%;
+    width: 30% ;
+    top: 45px;
+    }
+.Cuestionario{
+    display: inline-block;
+    position: relative;
+    left: 2%;
+    width: 30% ;
+    top: -120px;
+    size: 10px 10px;    
+    }
+    
+.Cuestionario3{
+    position: relative;
+    left: 10%;
+    width: 30% ;
+    top: 40px;
+    }

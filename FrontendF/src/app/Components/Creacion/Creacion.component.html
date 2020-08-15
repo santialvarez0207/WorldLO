@@ -1,0 +1,101 @@
+<br><br>
+ <!-- formularios -->
+<form #pageForm="ngForm" (ngSubmit)="verificacion(title,intro,cont,like1,like2,like3)" class="Cuestionario"
+    style="color:#581845;">
+    <div style="margin-left: 2%;">
+        <div class="card z-depth-3" style="width: 70%;height: 100%;">
+            <h3>New page</h3>
+
+            <input type="file" (change)="onPhotoSelected($event)" #photoInput>
+            <img [src]="photoSelected" class="img-fluid" alt="No image" (click)="photoInput.click()"
+                style="width: 20%;">
+        </div>
+        
+        <div class="row">
+            <div class="card z-depth-3 " style="width: 70%;height: 100%;">
+                <h5 style="margin-left: 1%;">Title</h5>
+                <div class="input-field col s12">
+                    <input type="text" name="title" #title placeholder="Enter title of the article"
+                        class="materialize-textarea"> 
+                </div>
+                <h5 style="margin-left: 1%;">Introduction</h5>
+                <div>
+                    <textarea name="intro" #intro placeholder="Enter the introduction of the article max 700 characters"
+                        class="materialize-textarea"></textarea>
+                </div>
+                <h5 style="margin-left: 1%;">Paragraph 1</h5>
+                <div>
+                    <textarea name="cont" #cont placeholder="Enter the text contenide, this section is in reformed"
+                        class="materialize-textarea"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div id="sector">
+            <h5>Optional sector</h5>
+        </div>
+        <div style="width: 70%; ">
+            <a class="waves-effect waves-light btn"
+                style="color:#ffc305;  background:#581845; display: block-inline; width: 48%;" (click)="EliminarParrafo()">+
+                delete paragraph </a>
+            <a class="waves-effect waves-light btn"
+                style="color:#ffc305;  background:#581845; display: block-inline;width: 48%; margin-left: 4% "
+                (click)="AgregarParrafo()">- Add paragraph</a>
+            <a class="waves-effect waves-light btn"
+                style="color:#ffc305;  background:#581845; display: block-inline;;width: 48%; margin-top:2%"
+                (click)="AgregarImagen()">+ Add image</a>
+            <a class="waves-effect waves-light btn"
+                style="color:#ffc305;  background:#581845; display: block-inline;;width: 48%; margin-left: 4% ;margin-top:2%"
+                (click)="EliminarImagen()">- Delete image</a>
+        </div>
+
+
+
+        <div class="input-field col s12" style="width: 70%">
+            <a style="color: #581845;">Themes</a>
+            <select class="browser-default custom-select" style="width: 25% ; display: inline-block; margin-left: 5%;"
+                name="like1" #like1>
+                <option value=0>None</option>
+                <option value=1>Math</option>
+                <option value=2>languaje</option>
+                <option value=3>Math</option>
+                <option value=4>Fisic</option>
+                <option value=5>Biology</option>
+                <option value=6>Astronomy</option>
+                <option value=7>Technology</option>
+                <option value=8>Human</option>
+                <option value=9>Art</option>
+            </select>
+            <select class="browser-default custom-select" style="width: 25% ; display: inline-block ;margin-left: 5%;"
+                name="like2" #like2>
+                <option value=0>None</option>
+                <option value=1>Math</option>
+                <option value=2>languaje</option>
+                <option value=3>Math</option>
+                <option value=4>Fisic</option>
+                <option value=5>Biology</option>
+                <option value=6>Astronomy</option>
+                <option value=7>Technology</option>
+                <option value=8>Human</option>
+                <option value=9>Art</option>
+            </select>
+            <select class="browser-default custom-select" style="width: 25% ; display: inline-block; margin-left: 5%;"
+                name="like3" #like3>
+                <option value=0>None</option>
+                <option value=1>Math</option>
+                <option value=2>languaje</option>
+                <option value=3>Math</option>
+                <option value=4>Fisic</option>
+                <option value=5>Biology</option>
+                <option value=6>Astronomy</option>
+                <option value=7>Technology</option>
+                <option value=8>Human</option>
+                <option value=9>Art</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" style="margin-left: 2%;color:#ffc305;  background:#581845; display: block;">
+        <h6>Create</h6>
+    </button>
+</form>

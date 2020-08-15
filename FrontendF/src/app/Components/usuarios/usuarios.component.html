@@ -1,0 +1,60 @@
+
+                    <form #usuarioForm="ngForm" (ngSubmit)="verificacion(name,password,mail)" class="Cuestionario">
+                        <h3>Register</h3>
+                        <div class="row">
+                            <div class="input-field col s12">
+                            <input type="text" name="name" #name placeholder="Enter your name" required>
+                            </div>
+                            <div class="input-field col s12">
+                            <input type="password" name="password" #password placeholder="Enter your password" required>
+                            </div>
+                            <div class="input-field col s12">
+                            <input type="text" name="mail" #mail placeholder="Enter your mail" required>
+                            </div>
+                            <div class="card-action">
+                            <div class="input-field- col s12">
+                            <button class="btn right"style="color:#ffc305;  background:#581845;">Save</button>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+                         
+                    <form #loginForm="ngForm" (ngSubmit)="loginuser(passwordl,maill)" class="Cuestionario2">
+                        <h3>Login</h3>     
+                        <div class="row">
+                            <div class="input-field col s12">
+                            <input type="text" name="maillogin" #maill style="color:  #581845;" placeholder="Enter your mail">
+                            </div>
+                            <div class="input-field col s12">
+                            <input type="password" name="passwordlogin" #passwordl style="color:  #581845;"  placeholder="Enter your password">
+                            </div>
+                            <div class="card-action">
+                            <div class="input-field- col s12">
+                            <button class="btn right"style="color:#ffc305;  background:#581845;">Login</button>
+                            </div>
+                            </div>
+                        </div>
+                    </form>
+        
+        <div class="col s7"></div>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Mail</th>
+                <th>Typeuser</th>
+                <th>operations</th>
+            </thead>
+            <tbody>
+                <tr  *ngFor="let Usuario of UsuarioService.usuario">
+                    <td>{{Usuario.name}}</td>
+                    <td>{{Usuario.password}}</td>
+                    <td>{{Usuario.mail}}</td>
+                    <td>{{Usuario.tipeuser}}</td>
+
+                    
+
+                </tr>
+            </tbody>
+        </table>
+    

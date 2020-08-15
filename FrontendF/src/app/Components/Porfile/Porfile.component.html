@@ -1,0 +1,29 @@
+
+                    <form #usuarioForm="ngForm" (ngSubmit)="verificacion(name,password,mail)" class="Cuestionario">
+                        <h3>update</h3>
+                        <div class="row">
+                            <div class="input-field col s12" id="nombre">
+                            <input type="text" name="name" #name placeholder="Enter your name">
+                            </div>
+                            <div class="input-field col s12" id="Contraseña">
+                            <input type="password"  name="password" #password placeholder="Enter your password">
+                            </div>
+                            <div class="input-field col s12" id="Correo">
+                            <input type="text" name="mail" #mail placeholder="Enter your mail">
+                            </div>
+                            <div class="card-action">
+                            <div class="input-field- col s12">
+                            <button class="btn right"style="color:#ffc305;  background:#581845;">Save</button>
+                            </div>
+                        </div>
+                        </div>
+                    </form>
+                <div class="Cuestionario2">
+                <div id="lugar">
+                <h3>Nombre</h3>
+                </div>
+                <div id="lugar1" >
+                <h3>Correo</h3>
+                </div>
+                </div>
+             

@@ -1,0 +1,45 @@
+<nav class="myCanvas">
+  <div class="nav-wrapper">
+    <h5 style="color: white ; margin-left:2%;" [routerLink]="['Home']" class="brand-logo">WorldLO</h5>
+    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+    <div id="nav-mobile" class="hide-on-med-and-down">
+      <a class="tata" id="Encabezado">
+        <a class="s" [routerLink]="['Home']">Home</a>
+        <a class="s" [routerLink]="['Explorar']">Explore</a>
+        <a *ngIf="true" style="margin: 0px 30px ;" class="dropdown-trigger" data-target="drop">Create</a>
+        <ul id="drop" class="dropdown-content" style=" background: linear-gradient(to right,#ff5733, #ffc305);">
+          <li><a [routerLink]="['Creacion']" style="color:white">Pages</a></li>
+          <li><a [routerLink]="['CExamenes']" style="color:white">Exam</a></li>
+          <li><a style="color:white" [routerLink]="['CreateGroup']">Groups </a></li>
+        </ul>
+      </a>
+    </div>
+  </div>
+  <canvas class="lateral" width="1" height="1">
+
+    <!-- para el modo responsive -->
+  </canvas>
+</nav>
+<div class="nav-content">
+  <ul class="sidenav" id="mobile-demo" style="background-color: #383738;">
+
+    <li><a style="color:#ffc305" [routerLink]="['Home']">Home</a></li>
+    <li><a style="color:#ffc305" [routerLink]="['Explorar']">Explore</a></li>
+    <li class="divider" tabindex="-1"></li>
+    <li><a [routerLink]="['Creacion']" style="color:#ffc305;">Pages</a></li>
+    <li><a [routerLink]="['CExamenes']" style="color:#ffc305">Exam</a></li>
+    <li><a style="color:#ffc305;" [routerLink]="['CreateGroup']">Groups </a></li>
+    <li class="divider" tabindex="-1"></li>
+    <div id="Encabezado2" class="down">
+   <!-- para el modo responsive -->
+    </div>
+  </ul>
+</div>
+<br>
+<router-outlet><!--Aca se muestra las paginas--></router-outlet>
+
+<br><br>
+<footer class="Endcredits">
+  <a class="Endcredits">Copyright &copy; Sico .Ltd all rightsreserved 2020 </a>
+</footer>

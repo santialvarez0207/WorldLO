@@ -1,0 +1,32 @@
+ <!-- formularios -->
+<div class="card z-depth-3 " style="width: 70%; left: 2%;">
+    <div id="title"></div>
+</div>
+<div class="card z-depth-3 " style="width: 70%; left: 2%;">
+    <i class="material-icons medium" style="left: 20%;" id="fav" (click)="favorite();">favorite</i>
+    <h5 style="display: inline-block;">Favorite?, if you like press heart</h5>
+</div>
+<div class="card z-depth-3 " style="width: 70%; left: 2%;">
+    <div id="sector"></div>
+</div>
+<button class="waves-effect waves-light btn"
+    style="color:#ffc305;  background:#581845; display: block; margin-left:2% ;height: 2%; width: 70%;" id="sector1"
+    (click)="delete()">
+</button>
+<br>
+<div class="card z-depth-3 " style="width: 70%; left: 2%;">
+    <form #pageForm="ngForm" (ngSubmit)="newcoment(coment)">
+        <textarea name="cont" class="materialize-textarea" #coment
+            placeholder="Enter your coment of the article max 700 characters"
+            style="margin-left: 2%; width: 96%;"></textarea>
+        <button class="Come1" class="waves-effect waves-light btn"
+            style="color:#ffc305;  background:#581845; display: block; margin-left:2% ;"> Send a new coment</button>
+    </form>
+</div>
+<br>
+<h4 style="margin-left: 2%;color:#581845 ;">Seccion de comentarios</h4>
+<div id="ComentariosN"></div>
+<div id="Comentarios"></div>
+
+
+<br><br><br><br>

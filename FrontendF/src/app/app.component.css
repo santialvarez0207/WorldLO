@@ -1,0 +1,42 @@
+.myCanvas{
+    background: linear-gradient(to right, #581845, #900c3f, #c70039, #ff5733, #ffc305);
+    position:absolute; 
+    top: 0%;
+
+
+width:100%;
+}
+
+.tata{ 
+display: inline-block; /*escribir consecutivo*/
+
+position: relative;
+left:60%;
+}
+
+.s{
+    margin: 0px 30px ;
+    color: white;
+}
+.lateral{
+    background:#c70039;
+    position: fixed; /*posicion relativa*/
+    left:80% ;
+    top:70px;
+width:19%;
+height:800px;
+border: 2px solid black;
+
+
+}
+.Endcredits a{
+    position: fixed;
+background: linear-gradient(to right, #581845, #900c3f, #c70039, #ff5733, #ffc305);
+color: white;
+top:98%;
+text-align: center;
+left: 25%;
+width:50%;
+
+
+}
