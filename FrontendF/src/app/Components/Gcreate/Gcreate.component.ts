@@ -6,7 +6,7 @@ import { Group } from 'src/app/Models/Group';
 import { AppComponent}from'../../app.component';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/Models/usuario';
-import { read } from 'fs';;
+
 
 declare var M: any;
 
@@ -19,7 +19,6 @@ interface HtmlInputEvent extends Event {
   templateUrl: './Gcreate.component.html',//cual elemento html esta utilizando
   styleUrls: ['./Gcreate.component.css'],//cual elemento css esta utilizando
   providers: [GroupService,UsuarioService,FormsModule],
-  
 })
 
 

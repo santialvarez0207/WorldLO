@@ -18,17 +18,7 @@ left:60%;
     margin: 0px 30px ;
     color: white;
 }
-.lateral{
-    background:#c70039;
-    position: fixed; /*posicion relativa*/
-    left:80% ;
-    top:70px;
-width:19%;
-height:800px;
-border: 2px solid black;
 
-
-}
 .Endcredits a{
     position: fixed;
 background: linear-gradient(to right, #581845, #900c3f, #c70039, #ff5733, #ffc305);

@@ -9,6 +9,7 @@ import { CExamenesComponent } from './Components/CExamenes/CExamenes.component';
 import { ExamcVisualiomponent } from './Components/Examenes/Examenes.component';
 import { Gcreatecomponent } from './Components/Gcreate/Gcreate.component';
 import { GVisualizecomponent  } from './Components/Gvisualize/Gvisualize.component';
+import { AboutusComponent  } from './Components/aboutus/aboutus.component';
 
 //la redireccion de las paginas dentro de angular
 const app_routes : Routes =[
@@ -22,6 +23,7 @@ const app_routes : Routes =[
     {path: 'Examenes/:id',component:  ExamcVisualiomponent},
     {path: 'CreateGroup',component:  Gcreatecomponent},
     {path: 'Group/:id',component:  GVisualizecomponent},
+    {path: 'aboutus',component:  AboutusComponent},
     {path: '',pathMatch:'full',redirectTo:''}
 ];
 export const app_routing = RouterModule.forRoot(app_routes);
