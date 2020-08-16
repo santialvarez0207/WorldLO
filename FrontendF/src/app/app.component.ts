@@ -29,66 +29,81 @@ export class AppComponent {
       this.Loga();
     }
   };
+  
+  //si esta logeado
+  Loga() { 
+  //------ se Crea en el nav el nombre el cual lo redirige a la pagina del usuario
 
-  Loga() { //si esta logeado
-    //------ Crea en el nav el nombre el cual lo redirige a la pagina del usuario
-    let Texto = document.createElement('a');// crea un elemento <a>
-    Texto.textContent = localStorage.getItem("name"); // toma del local storage el nombre del usuario
-    Texto.style.margin = ' 0px 30px'; //damos margen al elemento
-    Texto.onclick = function tata() { // cuando se de click al elemento redireccionara al perfil del usuario
+    let UlNav = document.getElementById("nav-mobile");
+    let liEtiqueta = document.createElement('li');
+    let aEtiqueta = document.createElement('a');
+    
+    //---------------------- creacion del logo -----------------------------
+    let logo = document.createElement('i')
+    logo.appendChild(document.createTextNode("account_circle"))
+    logo.className ="material-icons left"
+    aEtiqueta.appendChild(logo);
+
+    //--------- se obtiene el nombre y se establece en la etiqueta a ------
+    let nombre = document.createTextNode(localStorage.getItem("name")); 
+    aEtiqueta.appendChild(nombre)
+    aEtiqueta.className = 'btn-flat waves-effect waves-leght';  
+    aEtiqueta.style.color = "white"
+    aEtiqueta.onclick = function tata() { 
+      // cuando se de click al elemento redireccionara al perfil del usuario
       window.location.replace('./Porfile');
     }
-    document.getElementById("Encabezado").appendChild(Texto); //el elemento es hijo de objeto con id "encabezado"
-    //---- Crea en el nav "loggout" el cual permite al usuario salir 
-    Texto = document.createElement('a');
-    Texto.textContent = "Logout";
-    Texto.style.margin = ' 0px 30px';
-    Texto.onclick = function tata() { //cuando se haga click , establecera todos los datos en "" y sera como si estuvieran vacios o no logeado
-      localStorage.setItem("id", '');
-      localStorage.setItem("name", '');
-      localStorage.setItem("Correo", '');
-      window.location.replace('./Usuarios');
-    }
-    document.getElementById("Encabezado").appendChild(Texto);
-    //--------- // lo mismo de arriba pero para el modo responsive
-    let responsive = document.createElement('li');
-    document.getElementById("Encabezado2").appendChild(responsive);
-//nombre
-    Texto = document.createElement('a');
-    Texto.textContent = localStorage.getItem("name");
-    Texto.style.color = '#ffc305';
-    Texto.onclick = function tata() {
-      window.location.replace('./Porfile');
-    }
-    //logout
-    responsive.appendChild(Texto);
-    Texto = document.createElement('a');
-    Texto.textContent =  "Logout";
-    Texto.style.color = '#ffc305';
-    responsive.appendChild(Texto);
+    //se establecen las etiquetas en el nav
+    liEtiqueta.appendChild(aEtiqueta); 
+    UlNav.appendChild(liEtiqueta)
 
+    // responsive
+        //----- // lo mismo de arriba pero para el modo responsive
 
+    
+        let aResponsive = document.createElement('a');
+        aResponsive.textContent = localStorage.getItem("name");
+        aResponsive.onclick = function tata() { 
+          window.location.replace('./Porfile');
+        }
+        aResponsive.style.color = '#ffc305';
+        let liResponsive= document.createElement('li');
+        liResponsive.appendChild(aResponsive);
+        document.getElementById("Encabezado2").appendChild(liResponsive);
   }
-  noLoga() { // esto es para cuando el usuarion no esta logeado
-    //para crear en el nav la direccion de login o register 
-    let Texto = document.createElement('a'); 
-    Texto.textContent = 'Login';
-    Texto.style.margin = ' 0px 30px';
-    Texto.onclick = function tata() {
+
+
+  // esto es para cuando el usuarion no esta logeado
+  //para crear en el nav la direccion de login o register 
+    noLoga() { 
+
+      let UlNav = document.getElementById("nav-mobile");
+      let liEtiqueta = document.createElement('li');
+      let aEtiqueta = document.createElement('a');
+
+      let contenido = document.createTextNode(localStorage.getItem("login")); 
+      aEtiqueta.appendChild(contenido)
+      aEtiqueta.className = 'btn-flat waves-effect waves-leght';  
+      aEtiqueta.style.color = "white"
+      aEtiqueta.onclick = function tata() {
       window.location.replace('./Usuarios');
     }
-    document.getElementById("Encabezado").appendChild(Texto);
+
+    liEtiqueta.appendChild(aEtiqueta) 
+    UlNav.appendChild(liEtiqueta)
+
     //----- // lo mismo de arriba pero para el modo responsive
-    let responsive = document.createElement('li');
-    document.getElementById("Encabezado2").appendChild(responsive);
-    Texto = document.createElement('a');
-    Texto.textContent = 'Login';
-    Texto.style.margin = ' 0px 30px';
-    Texto.onclick = function tata() {
+
+    
+    let aResponsive = document.createElement('a');
+    aResponsive.textContent = 'Login';
+    aResponsive.onclick = function tata() {
       window.location.replace('./Usuarios');
     }
-    Texto.style.color = '#ffc305';
-    responsive.appendChild(Texto);
+    aResponsive.style.color = '#ffc305';
+    let liResponsive= document.createElement('li');
+    liResponsive.appendChild(aResponsive);
+    document.getElementById("Encabezado2").appendChild(liResponsive);
   }
 
   ngAfterViewInit() { //2
