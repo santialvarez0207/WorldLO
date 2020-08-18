@@ -81,7 +81,7 @@ export class AppComponent {
       let liEtiqueta = document.createElement('li');
       let aEtiqueta = document.createElement('a');
 
-      let contenido = document.createTextNode(localStorage.getItem("login")); 
+      let contenido = document.createTextNode("login"); 
       aEtiqueta.appendChild(contenido)
       aEtiqueta.className = 'btn-flat waves-effect waves-leght';  
       aEtiqueta.style.color = "white"

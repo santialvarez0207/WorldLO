@@ -9,12 +9,12 @@ import { CExamenesComponent } from './Components/CExamenes/CExamenes.component';
 import { ExamcVisualiomponent } from './Components/Examenes/Examenes.component';
 import { Gcreatecomponent } from './Components/Gcreate/Gcreate.component';
 import { GVisualizecomponent  } from './Components/Gvisualize/Gvisualize.component';
-import { HerramientasComponent} from './Components/herramientas/herramientas.component';
+import { OrganizerComponent} from './Components/organizer/organizer.component';
 
 //la redireccion de las paginas dentro de angular
 const app_routes : Routes =[
     {path: 'Usuarios',component: UsuariosComponent},
-    {path: 'herramientas',component: HerramientasComponent},
+    {path: 'organizer',component: OrganizerComponent},
     {path: 'Paginas/:id',component:  Paginascomponent},
     {path: 'Home',component:  HomeComponent},
     {path: 'Explorar',component:  Explorarcomponent},

@@ -16,7 +16,7 @@ import { CExamenesComponent } from './Components/CExamenes/CExamenes.component';
 import { ExamcVisualiomponent } from './Components/Examenes/Examenes.component';
 import { Gcreatecomponent } from './Components/Gcreate/Gcreate.component';
 import { GVisualizecomponent  } from './Components/Gvisualize/Gvisualize.component';
-import { HerramientasComponent } from './Components/herramientas/herramientas.component';
+import { OrganizerComponent } from './components/organizer/organizer.component';
 
 
 //modulos que utilizaran los diferentes archivos o sectores
@@ -34,7 +34,7 @@ import { HerramientasComponent } from './Components/herramientas/herramientas.co
     ExamcVisualiomponent,
     Gcreatecomponent,
     GVisualizecomponent,
-    HerramientasComponent,
+    OrganizerComponent,
   ],
   //modulos
   imports: [
