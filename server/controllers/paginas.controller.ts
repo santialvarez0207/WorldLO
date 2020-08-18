@@ -16,10 +16,8 @@ export async function createPagina(req: Request, res: Response): Promise<Respons
     const newpagina = { title,intro,ussename,like1,like2,like3,cont,usserid,Texto,datacreate,views,like,idCreador,Creador,com,imgUrl:req.file.path};
     const pagina = new Pagina(newpagina);
     await pagina.save();
-    return res.json({
-        message: 'pagina Saved Successfully',
-        pagina
-    });
+    return res.json(pagina);
+    //
 };
 
 export async function getPagina(req: Request, res: Response): Promise<Response> {

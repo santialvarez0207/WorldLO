@@ -1,5 +1,5 @@
 .myCanvas{
-    background: linear-gradient(to right, #581845, #900c3f, #c70039, #ff5733, #ffc305);
+    background: linear-gradient(to right, #3c0074, #020690);
     position:absolute; 
     top: 0%;
 
@@ -21,12 +21,10 @@ left:60%;
 
 .Endcredits a{
     position: fixed;
-background: linear-gradient(to right, #581845, #900c3f, #c70039, #ff5733, #ffc305);
+    background: linear-gradient(to right, #3c0074, #020690);
 color: white;
 top:98%;
 text-align: center;
 left: 25%;
 width:50%;
-
-
 }

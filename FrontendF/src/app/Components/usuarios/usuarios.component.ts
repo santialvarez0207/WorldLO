@@ -33,9 +33,10 @@ export class UsuariosComponent implements OnInit {
     signInButton.addEventListener('click', () => {
       container.classList.remove("right-panel-active");
     });
-
-
   }
+
+
+
 
   adduser(name: HTMLInputElement,password: HTMLInputElement,mail: HTMLInputElement){
       console.log(this.state);
@@ -51,17 +52,33 @@ export class UsuariosComponent implements OnInit {
 this.UsuarioService.getusuarios().subscribe(res=>{
 this.UsuarioService.usuario = res as Usuario[];
 console.log(res);
-
 })
-
   }
 
 
-  loginuser(password: HTMLInputElement,mail: HTMLInputElement){
-    
+
+login(){
+let x,y;
+x=<HTMLInputElement>document.getElementById("email1");
+y=<HTMLInputElement>document.getElementById("password1");
+
+this.loginuser(y,x);
+}
+register(){
+
+  let x,y,z;
+  x=<HTMLInputElement>document.getElementById("email");
+  y=<HTMLInputElement>document.getElementById("password");
+  y=<HTMLInputElement>document.getElementById("name");
+  
+  this.adduser(z,y,x);
+
+}
+
+
+  loginuser(password: HTMLInputElement,mail: HTMLInputElement){  
     this.UsuarioService.getusuarios().subscribe(res=>{
       this.UsuarioService.usuario = res as Usuario[];
-      
       var h;
       h = this.UsuarioService.usuario.length;
       for(var i=0;i<=h-1;i++){

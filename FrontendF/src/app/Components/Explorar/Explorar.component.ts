@@ -29,7 +29,6 @@ export class Explorarcomponent implements OnInit {
   }
 
  grupos (){ // para cambiar el titulo de busqueda,Cambia de paginas a grupos
-
    let eliminar = document.getElementById('Homegenerator');
    eliminar.remove();
    let sector = document.createElement('div');
@@ -66,10 +65,10 @@ export class Explorarcomponent implements OnInit {
         for (this.i; this.i <= this.i + 5; this.i++) {
           var a = res[this.i].intro;
           this.srt = 'http://localhost:3000/' + res[this.i].imgUrl;
-          this.Imagen(this.srt, './Paginas/' + res[this.i]._id,a,res[this.i].title);
+          this.Imagen(this.srt, './Paginas/' + res[this.i]._id,a,res[this.i].title,res[this.i].ussename);
         }
       } else {
-        this.Imagen("http://localhost:3000/Storage\\Notfound.png", "","Error","Error");
+        this.Imagen("http://localhost:3000/Storage\\Notfound.png", "","Error","Error","Error");
       }
     })
   }else{
@@ -80,10 +79,10 @@ export class Explorarcomponent implements OnInit {
       if (this.i + 5 <= this.h) {
         for (this.i; this.i <= this.i + 5; this.i++) {
           this.srt = 'http://localhost:3000/' + res[this.i].imgUrl;
-          this.Imagen(this.srt,  './Group/' + x[this.i]._id,x[this.i].Description,res[this.i].Name);
+          this.Imagen(this.srt,  './Group/' + x[this.i]._id,x[this.i].Description,res[this.i].Name,res[this.i].Admins[0]);
         }
       } else {
-        this.Imagen("http://localhost:3000/Storage\\Notfound.png", "","Error","Error");
+        this.Imagen("http://localhost:3000/Storage\\Notfound.png", "","Error","Error","Error");
       }
     })
   }
@@ -104,52 +103,69 @@ export class Explorarcomponent implements OnInit {
     this.paginas();
   }
 
-  Imagen(a: string, id: string,b:string, title:string) { //genra cada seccion 
-    let div = document.createElement('div');
-    
-    div.style.width= "70%"
-    div.style.marginLeft = "2%";
-    div.className ="card small"
-    div.onclick = function tata() {
-      window.location.replace( id);
-    }
-    document.getElementById("Homegenerator").appendChild(div);
-    let Imagen = document.createElement('img');
-    Imagen.className ="card-image"
-     Imagen.src = a;
-     Imagen.style.display = "inline-block";
-     Imagen.style.left="2%"
-     Imagen.style.width = "20%";
-     Imagen.style.height= "100%"
-    
-     div.appendChild(Imagen);
+  Imagen(a: string, id: string,b:string, title:string, autor:string) { //genra cada seccion 
+    let mayorm = document.createElement("div");
+    mayorm.className="col s2"
+    document.getElementById("Homegenerator").appendChild(mayorm);
+  
+  
+  let mayor = document.createElement("div");
+  mayor.className="card";
+  mayorm.appendChild(mayor);
+  let div = document.createElement("div");
+  div.className="card-image waves-effect waves-block waves-light"
+  mayor.appendChild(div);
+  let imagen = document.createElement("img")
+  imagen.src=a;
+  imagen.style.height="10%";
+  imagen.className="activator"
+  div.appendChild(imagen)
+  
+  div = document.createElement("div");
+  div.className="card-content"
+  mayor.appendChild(div);
+  let span = document.createElement("span");
+  span.className="card-title activator grey-text text-darken-4"
+  span.innerHTML=title;
+  div.appendChild(span)
+  
+  let icono = document.createElement("i")
+  icono.className="material-icons right "
+  icono.style.fontSize="35px"
+  icono.innerHTML="pageview"
+  icono.onclick = function tata() {
+    window.location.replace(id);
+  }
+  span.appendChild(icono);
 
-    let Texto = document.createElement('p');
-    Texto.className="card-content"
-    if (b.length > 700  ){}
-    Texto.textContent = b;
-
-    Texto.style.display = "inline-block";
-    Texto.style.width = "60%";
-    Texto.style.height= "100%"
-    Texto.style.wordWrap = "break-word";
-    div.appendChild(Texto);
-
-     let titl = document.createElement('h4');
-     titl.textContent = title;
-    titl.className ="card-action"
-    div.appendChild(titl);
+  
+  let p = document.createElement("p")
+  p.innerHTML=autor;
+  div.appendChild(p)
+  
+  div = document.createElement("div");
+  div.className="card-reveal"
+  mayor.appendChild(div);
+   span = document.createElement("span");
+  span.className="card-title grey-text text-darken-4"
+  span.innerHTML=title;
+  div.appendChild(span)
+   icono = document.createElement("i")
+  icono.className="material-icons right"
+  icono.innerHTML="close"
+  span.appendChild(icono);
+  p = document.createElement("p")
+  p.innerHTML=b;
+  div.appendChild(p)
+  
   }
 
   Actual(b:string){//genera el titulo
-    let Texto = document.createElement('h3');
+    let Texto = document.createElement('h2');
     Texto.className="card-content"
     Texto.textContent = b;
-    Texto.style.display = "inline-block";
-    Texto.style.color="#581845";
-    Texto.style.marginLeft="2%";
-    Texto.style.width = "60%";
-    Texto.style.height= "100%";
+    Texto.style.color="#3c0074";
+    Texto.style.marginLeft="46%";
     Texto.style.wordWrap = "break-word";
     document.getElementById("Homegenerator").appendChild(Texto);
   }

@@ -1,15 +1,14 @@
 <nav class="myCanvas">
   <div class="nav-wrapper">
-    <a href=""><h5 style="color: white ; margin-left:2%;" [routerLink]="['Home']" class="brand-logo">WorldLO</h5></a>
-    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <a href="/Explorar"><h5 style="color: white ; margin-left:2%;" [routerLink]="['Explorar']" class="brand-logo">WorldLO</h5></a>
+    <a href="" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
     <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li> <a class="s btn-flat waves-effect waves-#c2185b" [routerLink]="['Home']">Home</a> </li>
       <li> <a class="s btn-flat waves-effect waves-leght " [routerLink]="['Explorar']">Explore</a> </li>
       <li> <a class="s btn-flat waves-effect waves-leght" [routerLink]="['herramientas']">tools</a> </li>
       <li> <a *ngIf="true" class="s dropdown-trigger btn-flat waves-effect waves-leght" data-target="drop">Create</a> </li>
       <li> 
-        <ul id="drop" class="dropdown-content" style=" background: linear-gradient(to right,#ff5733, #ffc305);">
+        <ul id="drop" class="dropdown-content" style=" background: #020690;">
           <li><a class="waves-effect waves-leght" [routerLink]="['Creacion']" style="color:white">Pages</a></li>
           <li><a class="waves-effect waves-leght" [routerLink]="['CExamenes']" style="color:white">Exam</a></li>
           <li><a class="waves-leght" style="color:white" [routerLink]="['CreateGroup']">Groups </a></li>
@@ -24,14 +23,13 @@
 
 </nav>
 <div class="nav-content">
-  <ul class="sidenav" id="mobile-demo" style="background-color: #383738;">
+  <ul class="sidenav" id="mobile-demo" style="background-color: #3c0074; opacity: 92%;">
 
-    <li><a style="color:#ffc305" [routerLink]="['Home']">Home</a></li>
-    <li><a style="color:#ffc305" [routerLink]="['Explorar']">Explore</a></li>
+    <li><a style="color:white" [routerLink]="['Explorar']">Explore</a></li>
     <li class="divider" tabindex="-1"></li>
-    <li><a [routerLink]="['Creacion']" style="color:#ffc305;">Pages</a></li>
-    <li><a [routerLink]="['CExamenes']" style="color:#ffc305">Exam</a></li>
-    <li><a style="color:#ffc305;" [routerLink]="['CreateGroup']">Groups </a></li>
+    <li><a [routerLink]="['Creacion']" style="color:white;">Pages</a></li>
+    <li><a [routerLink]="['CExamenes']" style="color:white">Exam</a></li>
+    <li><a style="color:white;" [routerLink]="['CreateGroup']">Groups </a></li>
     <li class="divider" tabindex="-1"></li>
     <div id="Encabezado2" class="down">
    <!-- para el modo responsive -->
@@ -43,5 +41,5 @@
 
 <br><br>
 <footer class="Endcredits">
-  <a class="Endcredits">Copyright &copy; Sico .Ltd all rightsreserved 2020 </a>
+  <a class="Endcredits" style="z-index: 10;">Copyright &copy; Sico .Ltd all rightsreserved 2020 </a>
 </footer>

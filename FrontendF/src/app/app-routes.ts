@@ -17,7 +17,6 @@ const app_routes : Routes =[
     {path: 'Usuarios',component: UsuariosComponent},
     {path: 'herramientas',component: HerramientasComponent},
     {path: 'Paginas/:id',component:  Paginascomponent},
-    {path: 'Home',component:  HomeComponent},
     {path: 'Explorar',component:  Explorarcomponent},
     {path: 'Creacion',component:  Creacioncomponent},
     {path: 'Porfile',component:  PorfileComponent},

@@ -1,16 +1,19 @@
-<div  infiniteScroll [infiniteScrollDistance]="2"  (scrolled)="Prueba1()">
+<div style="color:#3c0074; margin-top:2%" infiniteScroll [infiniteScrollDistance]="2"  (scrolled)="Prueba1()">
     <br><br>
-    <div style="width: 70%; margin-left: 2%;">
-    <button  (click)="grupos()" class="waves-effect waves-light btn"
-    style="color:#ffc305;  background:#581845; display: block-inline;;width: 48%; margin-top:2%" >Groups</button>
-    <button  (click)="paginas()" class="waves-effect waves-light btn"
-    style="color:#ffc305;  background:#581845; display: block-inline;;width: 48%;margin-left: 4% ; margin-top:2% " >Pages</button>
+    <div class="row">
+    <button  (click)="grupos()" class="waves-effect waves-light btn col s4 offset-s1"
+    style="color:white;  background:#3c0074;" >Groups</button>
+
+
+
+    <button  (click)="paginas()" class="waves-effect waves-light btn col s4 offset-s2"
+    style="color:white;  background:#3c0074;" >Pages</button>
 </div>
-    <div id="Homegenerator1"></div>
+    </div>
+    <div id="Homegenerator1" class="row" ></div>
     
     <button  (click)="Prueba1()" class="Boton" >
         
         <h5>¿No se genera? </h5>
         <h5>precione aca </h5>
     </button>
-    </div>

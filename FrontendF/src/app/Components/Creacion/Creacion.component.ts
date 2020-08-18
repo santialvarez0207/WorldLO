@@ -85,6 +85,10 @@ this.a[i]=x.value;
 }
   this.PageService.postPagina(title.value,intro.value, localStorage.getItem("id"),localStorage.getItem("name"),like1.value,like2.value,like3.value,cont.value,this.file,this.a).subscribe(res =>{ 
   M.toast({html:'Page create :b'});
+  let f = res as Page;
+  var g :string = f.ussename
+  console.log(f)
+  console.log("Funciona? "+g)
  });
     
   
@@ -104,13 +108,13 @@ AgregarParrafo(){ // agrega un parrafo
   let n = document.createElement('div');
   n.id="BoxParrafe"+(1+this.contador);
   n.className="card z-depth-3";
-  n.style.color="#581845"
+  n.style.color="#3c0074"
   n.style.width = "70%"
   document.getElementById("sector").appendChild(n);
   let t = document.createElement('h3');
   t.textContent="Parrafe "+(1+this.contador);
   t.style.left = "2%"
-  t.style.color="#581845"
+  t.style.color="#3c0074"
   t.style.width = "70%"
   n.appendChild(t);
   let a = document.createElement('textarea');
@@ -119,7 +123,7 @@ AgregarParrafo(){ // agrega un parrafo
   a.id="Parrafe-"+(1+this.contador);
   a.style.left = "2%"
   a.placeholder="Incert the question o point of the exam"
-  a.style.color="#581845"
+  a.style.color="#3c0074"
   n.appendChild(a);
 this.contador++;
 }
@@ -134,13 +138,13 @@ AgregarImagen(){ // agrega para subir una imagen
   let n = document.createElement('div');
   n.id="BoxImagen"+(1+this.imag);
   n.className="card z-depth-3";
-  n.style.color="#581845"
+  n.style.color="#3c0074"
   n.style.width = "70%"
   document.getElementById("sector").appendChild(n);
   let t = document.createElement('h3');
   t.textContent="Imagen "+(1+this.imag);
   t.style.left = "2%"
-  t.style.color="#581845"
+  t.style.color="#3c0074"
   t.style.width = "70%"
   n.appendChild(t);
   let a = document.createElement('input');
@@ -150,7 +154,7 @@ AgregarImagen(){ // agrega para subir una imagen
   a.id="Parrafe-"+(1+this.imag);
   a.style.left = "2%"
   a.placeholder="Incert the question o point of the exam"
-  a.style.color="#581845"
+  a.style.color="#3c0074"
   n.appendChild(a);
 this.imag++;
 }

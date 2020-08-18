@@ -66,7 +66,7 @@ export class AppComponent {
         aResponsive.onclick = function tata() { 
           window.location.replace('./Porfile');
         }
-        aResponsive.style.color = '#ffc305';
+        aResponsive.style.color = 'white';
         let liResponsive= document.createElement('li');
         liResponsive.appendChild(aResponsive);
         document.getElementById("Encabezado2").appendChild(liResponsive);
@@ -86,7 +86,7 @@ export class AppComponent {
       aEtiqueta.className = 'btn-flat waves-effect waves-leght';  
       aEtiqueta.style.color = "white"
       aEtiqueta.onclick = function tata() {
-      window.location.replace('./Usuarios');
+      window.location.replace('./aboutus');
     }
 
     liEtiqueta.appendChild(aEtiqueta) 
@@ -98,9 +98,9 @@ export class AppComponent {
     let aResponsive = document.createElement('a');
     aResponsive.textContent = 'Login';
     aResponsive.onclick = function tata() {
-      window.location.replace('./Usuarios');
+      window.location.replace('./aboutus');
     }
-    aResponsive.style.color = '#ffc305';
+    aResponsive.style.color = 'white';
     let liResponsive= document.createElement('li');
     liResponsive.appendChild(aResponsive);
     document.getElementById("Encabezado2").appendChild(liResponsive);

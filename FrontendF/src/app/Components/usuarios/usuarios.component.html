@@ -1,12 +1,13 @@
 
-<div class="container" id="container">
+<div class="container" id="container" >
 	<div class="form-container sign-up-container">
 		<div class="formulario">
-			<h1>Create Account</h1>
-			<input class="input-field " type="text" placeholder="Name" />
-			<input  class="input-field " type="email" placeholder="Email" />
-			<input  class="input-field " type="password" placeholder="Password" />
-			<button>Sign Up</button>
+            <h1>Create Account</h1>
+            <span>create your account</span>
+			<input  class="input-field " type="text" placeholder="Name" id="name"/>
+			<input  class="input-field " type="email" placeholder="Email" id="email" />
+			<input  class="input-field " type="password" placeholder="Password" id="password" />
+			<button (click)="register()">Sign Up</button>
         </div>
     </div>
 
@@ -15,25 +16,24 @@
 	<div class="form-container sign-in-container">
 		<div class="formulario">
 			<h1>Sign in</h1>
-			<div class="social-container">
-			</div>
-			<span>or use your account</span>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
+			<input class="input-field " type="email" placeholder="Email"id="email1" />
+			<input class="input-field " type="password" placeholder="Password" id="password1"/>
+			<button (click)="login()">Sign In</button>
 		</div>
-	</div>
+    </div>
+    
+
 	<div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
+				<h1>:D Login!</h1>
+				<p>
+                    thank you for being part of this community</p>
 				<button class="ghost" id="signIn">Sign In</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
+				<h1>Hello,you are new?!</h1>
+				<p>Register your dastes for join to comunity</p>
 				<button class="ghost" id="signUp">Sign Up</button>
 			</div>
 		</div>
