@@ -9,6 +9,7 @@ import { getUsers, createUser, getUser, deleteUser, updateUser } from '../contro
 import { getPaginas, createPagina, getPagina,updatePagina,deletePagina } from '../controllers/paginas.controller';
 import { getGroup, createGroup, getGroups, deleteGroup, updateGroup } from '../controllers/Group.controller'
 import { getPublicG, createPublicG, getPublicGs,updatePublicG,deletePublicG } from '../controllers/PublicG.controller';
+import { getImagenes, createImagenes, getImageness,updateImagenes,deleteImagenes } from '../controllers/imagenes.controller';
 // rutas----
 router.route('/Usuarios')
     .get(getUsers)
@@ -62,6 +63,15 @@ router.route('/PublicG/:id')
     .delete(deletePublicG)
     .get(getPublicGs)
     .put(updatePublicG);
+//Imagenes------------------------------------------
+router.route('/Imagenes')
+    .get(getImageness)
+    .post(upload.single('image'),createImagenes);
+
+router.route('/Imagenes/:id')
+    .delete(deleteImagenes)
+    .get(getImagenes)
+    .put(updateImagenes);
 
 
 export default router;

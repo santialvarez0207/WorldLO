@@ -14,9 +14,7 @@ export async function createUser(req: Request, res: Response): Promise<Response>
     const newuser = {name,mail,password,tipeuser,like1,like2,like3,Lre,NomLL,LLreid,G,config,msg}; // se crea una constante con los datos
     const user = new User(newuser); // se adapta al modelo de mongo y se envia a este
     await user.save(); // devuelve una respuesta con todo lo enviado
-    return res.json({
-        user
-    });
+    return res.json(user);
 };
 
 export async function getUser(req: Request, res: Response): Promise<Response> {

@@ -12,18 +12,6 @@ NomLL:String,
 LLreid:[String],
 G:[String],
 config:[String],
-Lre:[{
-    NomL:String,
-    Lreid:[String]
-  }],
-
-  
-msg:[{
-    Ncontacto:String,
-    idcontacto:String,
-    ord:[String],
-    dm:[String],
-}]
 }); // esta es la estructura que se envia a mongod
 
 export interface Iusuario extends Document{
@@ -40,15 +28,5 @@ export interface Iusuario extends Document{
       G:[string];
       config:[string];
 
-      Lre:[{
-        NomL:string;
-        Lreid:[string];
-      }];
-      msg:[{
-        Ncontacto:string;
-        idcontacto:string;
-        ord:[string];
-        dm:[string];
-    }];
 } //estructura con la que se trabaja en el procesado de backend
 export default model<Iusuario>('Usuario',usuarioSchema)//envia la estructura a mongo

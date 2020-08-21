@@ -14,7 +14,7 @@ export async function createQuestion(req: Request, res: Response): Promise<Respo
     const newquestion = {text,resp,Cres,tipe,Uid};
     const question = new Question(newquestion);
     await question.save();
-    return res.json({question});
+    return res.json(question);
 };
 
 export async function getQuestion(req: Request, res: Response): Promise<Response> {

@@ -14,7 +14,7 @@ export async function createPublicG(req: Request, res: Response): Promise<Respon
     const newpublicg = {text,temp,usserid,ussename,imgUrl:req.file.path};
     const publicg = new PublicG(newpublicg);
     await publicg.save();
-    return res.json({publicg});
+    return res.json(publicg);
 };
 
 export async function getPublicG(req: Request, res: Response): Promise<Response> {

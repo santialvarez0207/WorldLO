@@ -14,13 +14,24 @@ export class PageService {
     return this.http.get<Page[]>(this.URI);
   }
   
-  postPagina(title: string, intro: string, usserid: string, ussename: string, like1: string, like2: string, like3: string, cont: string, img: File, Texto: Array<string>) {
+  postPagina(title: string, intro: string, usserid: string, ussename: string, like1: string, like2: string, like3: string, cont: string, img: File, Texto: Array<string>,videos:Array<string>,orden:Array<string>,imgUrlB:Array<string>,datos:Array<number>) {
     const fd = new FormData();
 
-    for (var i = 0; i <= 7; i++) {
+    for (var i = 0; i <= datos[0]-2; i++) {
       fd.append('Texto', Texto[i]);
-      console.log(Texto[i])
     }
+    for (var i = 0; i <= datos[2]-1; i++) {
+      fd.append('videos', videos[i]);
+    }
+    for (var i = 0; i <= datos[1]; i++) {
+      fd.append('imgUrlB', imgUrlB[i]);
+    }
+    for (var i = 0; i <= datos[3]-1; i++) {
+      fd.append('orden', orden[i]);
+    }
+
+
+
     fd.append('title', title);
     fd.append('intro', intro);
     fd.append('usserid', usserid);
@@ -32,13 +43,12 @@ export class PageService {
     fd.append('image', img);
 
     return this.http.post(this.URI, fd);
-
-
   }
+  
   putPagina(id: string, title: string, intro: string, usserid: string, ussename: string, like1: string, like2: string, like3: string, cont: string,
-    Texto: Array<string>, com: Array<string>, idCreador: Array<string>, Creador: Array<string>, like) {
+    Texto: Array<string>, com: Array<string>, idCreador: Array<string>, Creador: Array<string>, like, videos:Array<string>,orden:Array<string>,imgUrlB:Array<string>) {
 
-    return this.http.put(`${this.URI}/${id}`, { id, title, intro, usserid, like1, like2, like3, cont, Texto, com, idCreador, Creador, like,ussename });
+    return this.http.put(`${this.URI}/${id}`, { id, title, intro, usserid, like1, like2, like3, cont, Texto, com, idCreador, Creador, like,ussename,videos,orden,imgUrlB });
   }
 
   deletePagina(id: string) {

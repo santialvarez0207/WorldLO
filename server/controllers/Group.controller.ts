@@ -14,7 +14,7 @@ export async function createGroup(req: Request, res: Response): Promise<Response
     const newgroup = {Name,Description,usserid,ussename,Admins,Users,publicgroup,imgUrl:req.file.path};
     const group = new Group(newgroup);
     await group.save();
-    return res.json({group});
+    return res.json(group);
 };
 
 export async function getGroup(req: Request, res: Response): Promise<Response> {

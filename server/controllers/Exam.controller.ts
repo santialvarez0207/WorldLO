@@ -14,9 +14,7 @@ export async function createExam(req: Request, res: Response): Promise<Response>
     const newexam = {title,intro,usserid,ussename,data,questionid,imgUrl:req.file.path};
     const exam = new Exam(newexam);
     await exam.save();
-    return res.json({
-        exam
-    });
+    return res.json(exam);
 };
 
 export async function getExam(req: Request, res: Response): Promise<Response> {

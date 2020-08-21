@@ -15,4 +15,7 @@ Texto:[string];
 idCreador:[string];
 Creador:[string];
 com:[string];
+videos:[string];
+orden:[string];
+imgUrlB:[string];
 }
