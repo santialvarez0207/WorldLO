@@ -10,8 +10,8 @@ export async function getGroups(req: Request, res: Response): Promise<Response> 
 };
 
 export async function createGroup(req: Request, res: Response): Promise<Response> {
-    const {Name,Description,usserid,ussename,Admins,Users,publicgroup} = req.body;
-    const newgroup = {Name,Description,usserid,ussename,Admins,Users,publicgroup,imgUrl:req.file.path};
+    const {Name,Description,usserid,ussename,Users,Public} = req.body;
+    const newgroup = {Name,Description,usserid,ussename,Public,Users,imgUrl:req.file.path};
     const group = new Group(newgroup);
     await group.save();
     return res.json(group);
@@ -31,9 +31,7 @@ export async function deleteGroup(req: Request, res: Response): Promise<Response
 
 export async function updateGroup(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
-    const {Name,Description,usserid,ussename,Admins,Users,publicgroup} = req.body;
-    const updatedGroup = await Group.findByIdAndUpdate(id, {Name,Description,usserid,ussename,Admins,Users,publicgroup});
-    return res.json({
-        updatedGroup
-    });
+    const {Name,Description,usserid,ussename,Users,Public} = req.body;
+    const updatedGroup = await Group.findByIdAndUpdate(id, {Name,Description,usserid,ussename,Users,Public});
+    return res.json(updatedGroup);
 }

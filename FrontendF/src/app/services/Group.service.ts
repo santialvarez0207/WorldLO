@@ -14,17 +14,8 @@ export class GroupService {
     return this.http.get<Group[]>(this.URI);
   }
 
-  postGroup(Name: string, Description: string, usserid: string, ussename: string, img: File, Admins: Array<string>, Users: Array<string>, publicgroup: Array<string>, cant: Array<number>) {
+  postGroup(Name: string, Description: string, usserid: string, ussename: string, img: File) {
     const fd = new FormData();
-    for (var i=0;i<=cant[0];i++){
-      fd.append('Admins', Admins[i]);
-    }
-    for (var i=0;i<=cant[1];i++){
-      fd.append('Users', Users[i]);
-    }
-    for (var i=0;i<=cant[2];i++){
-      fd.append('publicgroup', publicgroup[i]);
-    }
     fd.append('Name',Name);
     fd.append('Description',Description);
     fd.append('usserid', usserid);
@@ -33,9 +24,12 @@ export class GroupService {
     return this.http.post(this.URI, fd);
   }
 
-  putGroup(id:string,Name: string, Description: string, usserid: string, ussename: string, Admins: Array<string>, Users: Array<string>, publicgroup: Array<string>) {
+  putGroup(id:string,Name: string, Description: string, usserid: string, ussename: string,    
+    Users:Array<{idUser:string;Name:string;Admin:string;}>,    
+    Public:Array<{idUser:string;Name:string;cont:string;imagen:string;lDate:string;}>,
+  imgUrl:string) {
 
-    return this.http.put(`${this.URI}/${id}`, { Name, Description, Admins, usserid, ussename, Users,publicgroup });
+    return this.http.put(`${this.URI}/${id}`, { Name, Description, Public, usserid, ussename, Users,imgUrl});
   }
 
   deleteGroup(id: string) {

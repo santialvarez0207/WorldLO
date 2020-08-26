@@ -46,9 +46,9 @@ export class PageService {
   }
   
   putPagina(id: string, title: string, intro: string, usserid: string, ussename: string, like1: string, like2: string, like3: string, cont: string,
-    Texto: Array<string>, com: Array<string>, idCreador: Array<string>, Creador: Array<string>, like, videos:Array<string>,orden:Array<string>,imgUrlB:Array<string>) {
+    Texto: Array<string>, com: Array<string>, idCreador: Array<string>, Creador: Array<string>, like, videos:Array<string>,orden:Array<string>,imgUrlB:Array<string>,likeid:Array<string>) {
 
-    return this.http.put(`${this.URI}/${id}`, { id, title, intro, usserid, like1, like2, like3, cont, Texto, com, idCreador, Creador, like,ussename,videos,orden,imgUrlB });
+    return this.http.put(`${this.URI}/${id}`, { id, title, intro, usserid, like1, like2, like3, cont, Texto, com, idCreador, Creador, like,ussename,videos,orden,imgUrlB,likeid });
   }
 
   deletePagina(id: string) {

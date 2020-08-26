@@ -18,6 +18,7 @@ import { Gcreatecomponent } from './Components/Gcreate/Gcreate.component';
 import { GVisualizecomponent  } from './Components/Gvisualize/Gvisualize.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { HerramientasComponent } from './Components/herramientas/herramientas.component';
+import { DeathStarComponent } from './components/death-star/death-star.component';
 
 
 //modulos que utilizaran los diferentes archivos o sectores
@@ -37,6 +38,7 @@ import { HerramientasComponent } from './Components/herramientas/herramientas.co
     GVisualizecomponent,
     AboutusComponent,
     HerramientasComponent,
+    DeathStarComponent,
   ],
   //modulos
   imports: [

@@ -10,8 +10,8 @@ export async function getUsers(req: Request, res: Response): Promise<Response> {
 };
 
 export async function createUser(req: Request, res: Response): Promise<Response> {
-    const {name,mail,password,tipeuser,like1,like2,like3,Lre,NomLL,LLreid,G,config,msg } = req.body; //se ingresan los diferentes datos del cuerpo del js
-    const newuser = {name,mail,password,tipeuser,like1,like2,like3,Lre,NomLL,LLreid,G,config,msg}; // se crea una constante con los datos
+    const {name,mail,password,tipeuser,like1,like2,like3,Group,config,chat,Like } = req.body; //se ingresan los diferentes datos del cuerpo del js
+    const newuser = {name,mail,password,tipeuser,like1,like2,like3,Group,config,chat,Like}; // se crea una constante con los datos
     const user = new User(newuser); // se adapta al modelo de mongo y se envia a este
     await user.save(); // devuelve una respuesta con todo lo enviado
     return res.json(user);
@@ -31,9 +31,7 @@ export async function deleteUser(req: Request, res: Response): Promise<Response>
 
 export async function updateUser(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
-    const {name,password,mail,tipeuser,like1,like2,like3 } = req.body;
-    const updatedUser = await User.findByIdAndUpdate(id, {name,password,mail,tipeuser,like1,like2,like3});
-    return res.json({
-        message: 'Successfully updated',
-    });
+    const {name,mail,password,tipeuser,like1,like2,like3,Group,config,chat,Like } = req.body;
+    const updatedUser = await User.findByIdAndUpdate(id, {name,mail,password,tipeuser,like1,like2,like3,Group,config,chat,Like});
+    return res.json(updatedUser); 
 }

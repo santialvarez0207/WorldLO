@@ -8,7 +8,7 @@ like1:string;
 like2:string;
 like3:string;
 cont:string;
-views:number;
+likeid:Array<string>;
 like:number;
 imgUrl:string;
 Texto:[string];

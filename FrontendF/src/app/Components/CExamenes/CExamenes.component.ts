@@ -6,12 +6,16 @@ import { QuestionService } from "../../services/Question.service";
 import { Question } from 'src/app/Models/Question';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/Models/usuario';
-
+import {Exam} from 'src/app/Models/Exam'
+import { Imagenes } from 'src/app/Models/Imagenes';
+import { ImagenesService } from "../../services/imagenes.service";
 declare var M: any; // para utilizar materialize
 
 interface HtmlInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
 }
+
+
 
 @Component({
   selector: 'app-Creacion',
@@ -20,7 +24,8 @@ interface HtmlInputEvent extends Event {
   providers: [ExamService,UsuarioService,QuestionService]
 })
 export class CExamenesComponent implements OnInit  {
-
+  img: Array<string> = [];
+  imag: number = 1;
   photoSelected: string | ArrayBuffer;
   file: File;
   usuario: Usuario[] = [];
@@ -28,14 +33,13 @@ export class CExamenesComponent implements OnInit  {
   contador:number=1; 
   count:number=0;
   ba:Array<string>=[];
-
+  orden: Array<string> = [];
+  ii: number = 0;
  state: boolean = true;
-  constructor(public ExamService:ExamService, private router:Router,public usuarioService:UsuarioService,public questionService:QuestionService) { }
+  constructor(public ExamService:ExamService, private router:Router,public usuarioService:UsuarioService,public questionService:QuestionService, public imagenservice: ImagenesService) { }
 
   ngOnInit(): void { //es lo primero que se ejectua
-
-    this.Agregar(); // agrega la primera pregunta
-    var xd;
+    this.Agregar(); // agrega la primera pregunta 
     var a =localStorage.getItem("name")
     this.usuarioService.getusuarios().subscribe(res=>{ // esta parte sirve para verificar si el usuario esta en la base de datos
       this.usuarioService.usuario = res as Usuario[];
@@ -61,7 +65,6 @@ export class CExamenesComponent implements OnInit  {
             localStorage.setItem("id","");
             localStorage.setItem("Correo","")
       }
-
     })
     //----- hasta aca
     if (a == ""){
@@ -84,56 +87,32 @@ window.location.replace("./Usuarios")
     }
   }
 
-borrarhastaelalma(){ //borra todas las preguntas en la base de datos
-  this.questionService.getQuestions().subscribe(res=>{
-    let a= res as Question[];
-    for (var i= 0 ; i <=a.length-1;i++ ){
-      this.questionService.deleteQuestion(a[i]._id).subscribe(res=>{});
-    }
-  });
-
-}
-
-Envio (actual:number){ //esta funcion sirve para cargar las preguntas la base de datos y toma el id de cada una para despues se le asigne a al cuestionario en general
-  //let x=<HTMLTextAreaElement>document.getElementById("hola");
-  var G: Array<string>= ["","","",""];var y: string; var res:string;
-  
-  y;
-  let x;
-  if (actual<this.count){
-
-//toma el valor de las 4 opciones
-  for (var ii=0 ; ii <=3;ii++){
-  x=<HTMLTextAreaElement>document.getElementById("Res"+ii+"-"+(actual+1));
-  G[ii]=x.value;
-  }
-  x=<HTMLTextAreaElement>document.getElementById("Question-"+(1+actual));
-  y=x.value
-  x=<HTMLTextAreaElement>document.getElementById("Res-"+(1+actual));
-  res=x.value
-//---------------------
-
-this.questionService.postQuestion(y,G,y,localStorage.getItem("id")).subscribe(res=>{ //pregunta
-    this.questionService.getQuestions().subscribe(res=>{
-      let a= res as Question[];
-      for (var i= 0 ; i <=a.length-1;i++ ){
-        if (a[i].Uid==localStorage.getItem("id")){ // comparamos si la nueva pregunta, id = = al usuario
-          this.ba[actual]=a[i]._id; // tomamos la id del la pregunta
-          console.log(a[i])
-          this.questionService.putQuestion(a[i].text,a[i].resp,y,a[i]._id,"").subscribe(res=>{console.log(res);
-            this.Envio(actual+1)});}
-      }
-    })//get questions :c
-
-  });
-
-  }if (actual>=this.count){
-   this.envioExam();
-  }
 
 
-}
+
 envioExam(){ //luego de haber cargado todas las preguntas ser anexadas al examen se envia el examen a la base de datos
+  var G: Array<string>=[];var a: string; var res:string;
+  var b;
+  var fd = new Exam;
+  fd.questionid=[]
+  for (var i=1 ; i <=this.count;i++){
+  for (var ii=0 ; ii <=3;ii++){
+    b=<HTMLTextAreaElement>document.getElementById("Res"+ii+"-"+(i));
+    G[ii]=b.value;
+    }
+    b=<HTMLTextAreaElement>document.getElementById("Question-"+(i));
+    a=b.value
+    b=<HTMLOptionElement>document.getElementById("Res-"+(i));
+    res=b.value
+
+    console.log(G)
+    console.log(a)
+    console.log(res)
+
+    fd.questionid[i-1]={preguntas:G,correcta:res,pregunta:a}
+      
+  }
+  
    let x;
    console.log("1")
   var title:string;var intro:string
@@ -142,55 +121,67 @@ envioExam(){ //luego de haber cargado todas las preguntas ser anexadas al examen
      x=<HTMLTextAreaElement>document.getElementById("intro");
      intro=x.value;
         console.log("2")
-     this.ExamService.postExam(title,intro,localStorage.getItem("id"),localStorage.getItem("name"),this.file,this.ba,this.ba.length).subscribe(res=>
-     {console.log(res)});
+    //  this.ExamService.postExam().subscribe(res=>
+    //  {console.log(res)});
      console.log (this.ba)
-    
+
+var imagenes:Array<File>=[]
+     for (var i = 1; i <= this.imag - 1; i++) {
+      let x = <HTMLInputElement>document.getElementById("imagen-" + i)
+      imagenes[i-1] = x.files[0];
     }
 
+     this.imagenservice.postImagenes(imagenes, this.imag - 1).subscribe(res => {
+      let ids = res as Imagenes;
+      console.log(ids)
+      for (var i = 0; i <= this.imag - 2; i++) {
+        this.img[i] = ids.U[i].path;
+      }
+      this.ExamService.postExam(title,intro,localStorage.getItem("id"),localStorage.getItem("name"),[],fd.questionid,this.img,this.orden).subscribe(res=>{console.log(res)
+      let aqui= res as Exam
+    
+    document.getElementById("id").textContent="id: "+aqui._id
+    });
+        });
 
+
+     
+    }
+
+33
 
 Agregar(){ // esta funcion sirve para agregar preguntas al cuestionario
   let n = document.createElement('div' );
   n.id="BoxQuestion"+(1+this.count);
   n.style.left = "2%"
   n.className="card z-depth-3";
-  n.style.color="#581845"
+  n.style.color="#3c0074"
   n.style.width = "70%"
   document.getElementById("sector").appendChild(n);
   let t = document.createElement('h3');
   t.textContent="Question "+(1+this.count);
   t.style.left = "2%"
-  t.style.color="#581845"
+  t.style.color="#3c0074"
   t.style.width = "70%"
   n.appendChild(t);
    
   let a = document.createElement('textarea');
-  a.style.width="70%"
+  a.style.width="80%"
   a.className="materialize-textarea";
   a.id="Question-"+(1+this.count);
   a.style.left = "2%"
   a.placeholder="Incert the question o point of the exam"
-  a.style.color="#581845"
+  a.style.color="#3c0074"
+  a.style.marginLeft="2%"
+  a.style.display="block"
 
   n.appendChild(a);
- let p = document.createElement('input');
- p.style.display="block";
- p.style.background= "#581845"
- p.type="file";
- p.className="btn waves-effect"
-
- n.appendChild(p);
-
-  let i= document.createElement('img');
-
-  p.appendChild(i);
 
 for (var ii=0 ; ii <=3;ii++){
   let b = document.createElement('p');
   b.textContent=""+(ii+1)
   b.className="materialize-textarea";
-  b.style.color="#581845"
+  b.style.color="#3c0074"
   b.style.display="inline-block"
   b.style.width = "5%"
   b.style.position = "-20px"
@@ -204,23 +195,106 @@ for (var ii=0 ; ii <=3;ii++){
   a.style.width="80%"
   a.style.marginRight="10%"
   a.style.display="inline-block"
-  a.style.color="#581845"
+  a.style.color="#3c0074"
   n.appendChild(a);
 }
-a = document.createElement('textarea');
-  a.style.width="70%"
-  a.className="materialize-textarea";
-  a.id="Res-"+(1+this.count);
-  a.style.left = "2%"
-  a.placeholder="Incert correct answer"
-  a.style.color="#581845"
-  n.appendChild(a);
+
+let g = document.createElement('div' );
+g.style.left = "2%"
+g.style.color="#3c0074"
+g.style.width = "70%"
+n.appendChild(g);
+var ya = document.createElement('select');
+ya.style.width="70%"
+ya.className="browser-default custom-select";
+ya.id="Res-"+(1+this.count);
+ya.style.left = "2%"
+ya.style.color="#3c0074"
+
+var option=document.createElement('option')
+option.value="1";
+option.text="1"
+ya.appendChild(option);
+var option=document.createElement('option')
+option.value="2";
+option.text="2"
+ya.appendChild(option);
+var option=document.createElement('option')
+option.value="3";
+option.text="3"
+ya.appendChild(option);
+var option=document.createElement('option')
+option.value="4";
+option.text="4"
+ya.appendChild(option);
+
+g.appendChild(ya);
 this.count++;
+
+this.ordenfuction(1,"1")
 }
 
 Eliminar (){ //esta sirve para eliminar preguntas del cuestionario
 let y =document.getElementById("BoxQuestion"+(this.count));
 y.remove()
 this.count--;
+this.ordenfuction(1,"2")
 }
+
+
+
+EliminarImagen() {// agrega para eliminar una pagina
+  let y = document.getElementById("BoxImagen" + (this.imag));
+  y.remove()
+  this.imag--;
+  this.ordenfuction(2, "2")
+}
+
+AgregarImagen() { // agrega para subir una imagen
+  let n = document.createElement('div');
+  n.id = "BoxImagen" + (1 + this.imag);
+  n.className = "card z-depth-3";
+  n.style.color = "#3c0074"
+  n.style.width = "70%"
+  n.style.marginLeft = "2%"
+  document.getElementById("sector").appendChild(n);
+  let t = document.createElement('h3');
+  t.textContent = "Imagen " + (this.imag);
+  t.style.left = "2%"
+  t.style.color = "#3c0074"
+  t.style.width = "70%"
+  n.appendChild(t);
+  let a = document.createElement('input');
+  a.style.width = "100%"
+  a.type = "file"
+  a.className = "materialize-textarea";
+  a.id = "imagen-" + (this.imag);
+  a.style.left = "2%"
+  a.placeholder = "Incert the question o point of the exam"
+  a.style.color = "#3c0074"
+  n.appendChild(a);
+  this.imag++;
+  this.ordenfuction(1, "2")
+}
+
+ordenfuction(a: number, b: string) {
+  if (a == 1) {
+    this.orden[this.ii] = b;
+    this.ii++;
+  }
+  else {
+    var state: boolean = false;
+    for (var i = this.ii; i >= 0; i--) {
+      if (this.orden[i] == b && state == false) {
+        for (var r = i; r <= this.ii - 1; r++) {
+          this.orden[r] = this.orden[r + 1]
+        }
+        this.ii--;
+        state = true;
+      }
+
+    }
+  }
+}
+
 }

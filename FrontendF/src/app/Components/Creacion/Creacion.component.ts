@@ -35,15 +35,12 @@ export class Creacioncomponent implements OnInit {
   constructor(public PageService: PageService, private router: Router, public usuarioService: UsuarioService, public imagenservice: ImagenesService) { } //3 son para definir que otros archivos estamos utilizando
 
   ngOnInit(): void { // para cuando incia 
-    var xd;
-
     var a = localStorage.getItem("name")
     this.usuarioService.getusuarios().subscribe(res => { // hace una verificacion si el usuario esta en la base de datos
       this.usuarioService.usuario = res as Usuario[];
       var h;
       var x: boolean = false;
       h = this.usuarioService.usuario.length;
-
       for (var i = 0; i <= h - 1; i++) {
         var s = localStorage.getItem("id");
         if (s == res[i]._id) {
@@ -67,7 +64,6 @@ export class Creacioncomponent implements OnInit {
       M.toast({ html: 'Srry you need stay register for create a new page :D' });
       window.location.replace("./Usuarios")
     }
-
   }
 
   onPhotoSelected(event: HtmlInputEvent): void { // para cargar una imagen
@@ -80,54 +76,50 @@ export class Creacioncomponent implements OnInit {
     }
   }
 
-  addpages(title: HTMLInputElement, intro: HTMLTextAreaElement, cont: HTMLTextAreaElement, like1: HTMLSelectElement, like2: HTMLSelectElement, like3: HTMLSelectElement) {
+  addpages() {
     //se envia el contenido a la base de datos
-   
-      var a: Array<string>=[], b: Array<string>=[], c: Array<string>=[];
+
+    var a: Array<string> = [], c: Array<string> = [], b: Array<File> = [];
+
+    var title = <HTMLInputElement>document.getElementById("title")
+    var intro = <HTMLTextAreaElement>document.getElementById("intro")
+    var cont = <HTMLTextAreaElement>document.getElementById("cont")
+    var like1 = <HTMLSelectElement>document.getElementById("like1")
+    var like2 = <HTMLSelectElement>document.getElementById("like2")
+    var like3 = <HTMLSelectElement>document.getElementById("like3")
 
 
-      for (var i = 0; i <= this.contador-2; i++) {
-        let x = <HTMLTextAreaElement>document.getElementById("Parrafe-" + (1 + i));
-        a[i] = x.value;
-        console.log( x.value)
+    for (var i = 0; i <= this.contador - 2; i++) {
+      let x = <HTMLTextAreaElement>document.getElementById("Parrafe-" + (1 + i));
+      a[i] = x.value;
+      console.log(x.value)
+    }
+    for (var i = 0; i <= this.video - 2; i++) {
+      let x = <HTMLTextAreaElement>document.getElementById("video-" + (1 + i));
+      c[i] = "https://www.youtube.com/embed/" + x.value.slice(32, 45);;
+      console.log(c[i])
+    }
+
+
+    for (var i = 1; i <= this.imag - 1; i++) {
+      let x = <HTMLInputElement>document.getElementById("imagen-" + i)
+      b[i-1] = x.files[0];
+    }
+
+    this.imagenservice.postImagenes(b, this.imag - 1).subscribe(res => {
+      let ids = res as Imagenes;
+      console.log(ids)
+      for (var i = 0; i <= this.imag - 2; i++) {
+        this.img[i] = ids.U[i].path;
       }
-      for (var i = 0; i <= this.video-2; i++) {
-        let x = <HTMLTextAreaElement>document.getElementById("video-" + (1 + i));
-        c[i] ="https://www.youtube.com/embed/"+ x.value.slice(32,45);;
-        console.log( c[i])
-      }
-      console.log( title.value)
-      console.log( intro.value)
-      console.log( cont.value)
-      console.log( like1.value)
-      console.log( like2.value)
-      console.log( like3.value)
-      console.log( this.contador)
-      console.log( this.video)
-      console.log( this.imag)
-      console.log( this.ii)
-
-
-      this.PageService.postPagina(title.value, intro.value, localStorage.getItem("id"), localStorage.getItem("name"), like1.value, like2.value, like3.value, cont.value, 
-      this.file, a, c, this.orden,this.img, [this.contador,this.video,this.imag,this.ii ]).subscribe(res => {
-        M.toast({ html: 'Page create :b' });
-        let f = res as Page;
-        var g: string = f.ussename
-        console.log(f)
-        console.log("Funciona? " + g)
-      });
-
-
-    
-  }
-
-
-  getpages() {
-    this.PageService.getPaginas().subscribe(res => {
-      this.PageService.page = res as Page[];
+      this.PageService.postPagina(title.value, intro.value, localStorage.getItem("id"), localStorage.getItem("name"), like1.value, like2.value, like3.value, cont.value,
+        this.file, a, c, this.orden, this.img, [this.contador, this.video, this.imag, this.ii]).subscribe(res => {
+          M.toast({ html: 'Page create :b' });
+        });
     })
-  }
 
+
+  }
 
 
   AgregarParrafo() { // agrega un parrafo
@@ -170,7 +162,7 @@ export class Creacioncomponent implements OnInit {
     n.style.width = "70%"
     document.getElementById("sector").appendChild(n);
     let t = document.createElement('h3');
-    t.textContent = "Imagen " + (1+this.imag);
+    t.textContent = "Imagen " + (1 + this.imag);
     t.style.left = "2%"
     t.style.color = "#3c0074"
     t.style.width = "70%"
@@ -228,14 +220,6 @@ export class Creacioncomponent implements OnInit {
     this.ordenfuction(2, "2")
   }
 
-
-
-  prueba() {
-    for (var r = 0; r <= this.ii; r++) {
-      console.log(this.orden[r])
-    }
-  }
-
   ordenfuction(a: number, b: string) {
     if (a == 1) {
       this.orden[this.ii] = b;
@@ -255,44 +239,6 @@ export class Creacioncomponent implements OnInit {
       }
     }
   }
-
-
-  imagenes(a:number) {
-    let intro = <HTMLInputElement>document.getElementById("intro")
-    console.log(intro)
-    if (intro.value.length > 700) {
-      M.toast({ html: 'intro:  max 700' });
-    } else {
-
-      if (a < this.imag) {
-        console.log("hola "+a)
-        let x = <HTMLInputElement>document.getElementById("imagen-"+a)
-        this.imagenservice.postImagenes(x.files[0]).subscribe(res => {
-          let f = res as Imagenes
-          this.img[a - 1] = f.U;
-          console.log(this.img[a - 1])
-          this.imagenservice.deleteImagenes(f._id).subscribe(res => { })
-          this.imagenes(a + 1);
-        })
-      }
-
-      else {
-        console.log("entro")
-        this.addpages(<HTMLInputElement>document.getElementById("title"),
-        <HTMLTextAreaElement>document.getElementById("intro"),
-        <HTMLTextAreaElement>document.getElementById("cont"),
-        <HTMLSelectElement>document.getElementById("like1"),
-        <HTMLSelectElement>document.getElementById("like2"),
-        <HTMLSelectElement>document.getElementById("like3"));
-      }
-
-
-
-
-    }
-  }
-
-
 
 
 }

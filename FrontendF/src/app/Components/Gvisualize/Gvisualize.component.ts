@@ -8,7 +8,10 @@ import { AppComponent } from '../../app.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { text } from 'express';
 import { PublicGService } from 'src/app/services/PublicG.service'
+import { Imagenes } from 'src/app/Models/Imagenes';
+import { ImagenesService } from "../../services/imagenes.service";
 
+declare var M: any; // esta es una variable que utiliza materialize
 interface HtmlInputEvent extends Event {
   target: HTMLInputElement & EventTarget;
 }
@@ -20,13 +23,17 @@ interface HtmlInputEvent extends Event {
 
 })
 
+
 export class GVisualizecomponent implements OnInit {
-  constructor(private usuarioservice: UsuarioService, private groupService: GroupService, private router: Router, private activatedRoute: ActivatedRoute, private publicGService: PublicGService) { }
+  constructor(private usuarioservice: UsuarioService, private groupService: GroupService, private router: Router, private activatedRoute: ActivatedRoute,
+    private publicGService: PublicGService, public imagenservice: ImagenesService) { }
   id: string;
   favoritestate: boolean = false;
   new: boolean = true;
   photoSelected: string | ArrayBuffer;
   file: File;
+  b: Group;
+  seguidor: boolean = false;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -34,9 +41,18 @@ export class GVisualizecomponent implements OnInit {
       console.log(this.id);
       this.comprobar(this.id);
     });
-    this.publicaciones('http://localhost:3000/Storage\\Notfound.png', "hola", "c"); // prueba de publicacion
 
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.parallax');
+      var instances = M.Parallax.init(elems);
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('.modal');
+      var instances = M.Modal.init(elems);
+    });
   }
+
   onPhotoSelected(event: HtmlInputEvent): void {
     if (event.target.files && event.target.files[0]) {
       this.file = <File>event.target.files[0];
@@ -49,64 +65,45 @@ export class GVisualizecomponent implements OnInit {
 
   comprobar(a: string) { // comprueba si la persona es la creadora y genera un boton la cual le permite borrar la pagina
     this.groupService.getGroup(a).subscribe(res => {
-      var b = res as Group;
+      this.b = res as Group;
+      let x = <HTMLImageElement>document.getElementById("imagen");
+      x.src = "http://localhost:3000/" + this.b.imgUrl;
+      let title = document.getElementById("nombre");
+      title.innerHTML = this.b.Name;
+      let introduction = document.getElementById("indroduction")
+      introduction.innerHTML = this.b.Description;
       var admin: boolean = false;
-      for (var i = 0; i <= b.Admins.length - 1; i++) {
-        if (b.Admins[i] == localStorage.getItem("id")) {
-          admin = true;
-          let delet = document.createElement("a")
-          delet.textContent = "Delete?";
-          document.getElementById("sector1").appendChild(delet);
-        }
+      if (this.b.usserid == localStorage.getItem("id")) {
+        admin = true;
+        let delet = document.createElement("a")
+        delet.textContent = "Delete?";
+        document.getElementById("sector1").appendChild(delet);
+
       }
-      if (admin == false) {
+      else{
+        let Texto = document.getElementById("sector11")
+        Texto.remove();
+        Texto = document.getElementById("sector111")
+        Texto.remove();
         var f = document.getElementById("sector1")
         f.remove();
       }
+      if (admin == false) {
 
+      }
+      this.follower();
       console.log(res);
-      this.Title(b.Name);
-      this.Imagen("http://localhost:3000/" + b.imgUrl);
-      this.Intro(b.Description);
-      var h;
-
-      if (localStorage.getItem("id") == b.usserid) {
+      if (localStorage.getItem("id") == this.b.usserid) {
       } else {
+      }
+      console.log(this.b.Public.length);
+      for (var i = 0; i <= this.b.Public.length - 1; i++) {
+        console.log("HDPTR");
+        this.publicaciones('http://localhost:3000/' + this.b.Public[i].imagen, this.b.Public[i].cont, this.b.Public[i].Name, this.b.Public[i].lDate);
       }
     });
   }
 
-
-  Title(a: string) {
-    let Texto = document.createElement('h3');
-    var otracosa = a;
-    Texto.style.marginLeft = "2%";
-    Texto.style.marginTop = "70px";
-    Texto.textContent = otracosa;
-    document.getElementById("sector").appendChild(Texto);
-  }
-
-  Intro(a: string) {
-    let Texto = document.createElement('p');
-    var otracosa = a;
-    Texto.textContent = otracosa;
-    Texto.style.marginLeft = "2%";
-    Texto.style.display = "inline-block";
-    Texto.style.width = "30%";
-    Texto.style.wordWrap = "break-word";
-    Texto.style.marginRight = "20%";
-    document.getElementById("sector").appendChild(Texto);
-  }
-
-  Imagen(a: string) {
-    let Imagen = document.createElement('img');
-    Imagen.style.marginLeft = "2%";
-    Imagen.style.background = "#ff5733";
-    Imagen.src = a;
-    Imagen.style.width = "96%";
-    Imagen.style.height = "100px"
-    document.getElementById("sector").appendChild(Imagen);
-  }
 
   botton_delete(a: string) {
     let Texto = document.createElement('h5');
@@ -127,39 +124,22 @@ export class GVisualizecomponent implements OnInit {
   }
 
   agregar(a: HTMLInputElement, b: HTMLTextAreaElement) {
-
-    this.publicGService.postPublicG(a.value, b.value, localStorage.getItem("id"), localStorage.getItem("name"), this.file, localStorage.getItem("id")).subscribe(res => {
-      let g = res as PublicG;
-      this.publicGService.getPublicGs().subscribe(res => {
-        for (var i = res.length - 1; i >= 0; i--) {
-          if (g.temp == res[i].temp) {
-            var tempid = res[i]._id;
-            this.publicGService.putPublicG(tempid, a.value, b.value, localStorage.getItem("id"), localStorage.getItem("name"), "").subscribe(res => {
-              this.groupService.getGroup(this.id).subscribe(res => {
-                let g2 = res as Group;
-                g2.publicgroup[g2.publicgroup.length] = tempid;
-                this.groupService.putGroup(this.id, g2.Name, g2.Description, g2.usserid, g2.ussename, g2.Admins, g2.Users, g2.publicgroup)
-              })
-            })
-          }
-        }
-      })
-    })
   }
-
-  publicaciones(a: string, b: string, c: string) {
+  publicaciones(a: string, b: string, c: string, d: string) {
     let n = document.createElement('div');
-    n.style.left = "2%"
+    n.style.left = "10%"
     n.className = "card z-depth-3";
-    n.style.width = "70%"
+    n.style.width = "80%"
     document.getElementById("Public").appendChild(n);
-    let Imagen = document.createElement('img');
-    Imagen.style.marginLeft = "25%";
-    Imagen.style.background = "#ff5733";
-    Imagen.src = a;
-    Imagen.style.width = "50%";
-    Imagen.style.height = "300px"
-    n.appendChild(Imagen);
+    if (a != "http://localhost:3000/none") {
+      let Imagen = document.createElement('img');
+      Imagen.style.marginLeft = "25%";
+      Imagen.style.background = "#ff5733";
+      Imagen.src = a;
+      Imagen.style.width = "50%";
+      Imagen.style.height = "300px"
+      n.appendChild(Imagen);
+    }
     let Texto = document.createElement('p');
     Texto.textContent = b;
     Texto.style.marginLeft = "2%";
@@ -177,14 +157,185 @@ export class GVisualizecomponent implements OnInit {
     Texto.style.wordWrap = "break-word";
     Texto.style.marginRight = "20%";
     n.appendChild(Texto);
+    Texto = document.createElement('p');
+    Texto.textContent = d;
+    Texto.style.marginLeft = "2%";
+    Texto.style.display = "inline-block";
+    Texto.style.width = "30%";
+    Texto.style.color = "#581845";
+    Texto.style.wordWrap = "break-word";
+    Texto.style.marginRight = "20%";
+    n.appendChild(Texto);
   }
 
+  follower() {
+    this.seguidor = false;
+    var admin: boolean = false;
+    var a = this.b.Users.length
+
+    console.log(this.b.Users.length)
+    for (var i = 0; i <= a - 1; i++) {
+      console.log("f")
+      if (this.b.Users[i].idUser == localStorage.getItem("id")) {
+        console.log("hola")
+        this.seguidor = true;
+        if (this.b.Users[i].Admin == "1") {
+          admin = true;
+        }
+      }
+    }
+    if (this.seguidor == true) {
+      let alpha = document.getElementById("seguir")
+      alpha.innerHTML = "Dejar de seguir"
+    } else {
+      let alpha = document.getElementById("seguir")
+      alpha.innerHTML = "seguir"
+    }
+    if (this.b.usserid == localStorage.getItem("id")) {
+      let alpha = document.getElementById("seguir")
+      this.seguidor == true;
+      admin = true;
+      this.tabla();
+      alpha.innerHTML = "Eres el dueño"
+      alpha.className = "waves-effect waves-light btn-small disabled"
+    }else{
+
+
+    }
+    if (admin == false) {
+      let envio = document.getElementById("envios")
+      envio.remove();
+    }
+
+  }
+
+
+  seguir() {
+
+    this.groupService.getGroup(this.id).subscribe(res => {
+      this.b = res as Group;
+      console.log(this.seguidor)
+      if (this.seguidor == true) {
+        var a = this.b.Users.length
+        console.log(a)
+        for (var i = 0; i <= a - 2; i++) {
+          if (this.b.Users[i].idUser == localStorage.getItem("id")) {
+            for (var ii = i; ii <= this.b.Users.length - 2; ii++) {
+              this.b.Users[ii] = this.b.Users[ii + 1]
+            }
+          }
+        }
+        this.b.Users.length = this.b.Users.length - 1
+      }
+      if (this.seguidor == false) {
+        this.b.Users[this.b.Users.length] = { idUser: localStorage.getItem("id"), Name: localStorage.getItem("name"), Admin: "0" }
+      }
+      this.groupService.putGroup(this.id, this.b.Name, this.b.Description, this.b.usserid, this.b.ussename, this.b.Users, this.b.Public, this.b.imgUrl).subscribe(res => {
+        this.seguirUsuario()
+        console.log(this.follower)
+      })
+    })
+  }
+
+  obtener() {
+    let conts = <HTMLTextAreaElement>document.getElementById("cont")
+    var x = conts.value
+    let img = <HTMLInputElement>document.getElementById("img")
+    var f: File = img.files[0]
+    console.log(f)
+    if (f != undefined) {
+      this.groupService.getGroup(this.id).subscribe(res => {
+        this.b = res as Group;
+        let fecha = new Date()
+        this.imagenservice.postImagenes([f], 1).subscribe(ress => {
+          let xx = ress as Imagenes;
+          this.b.Public[this.b.Public.length] = {
+            idUser: localStorage.getItem("id"), Name: localStorage.getItem("name"), imagen: xx.U[0].path, cont: x,
+            lDate: (fecha.getDate + "/" + fecha.getMonth() + "/" + fecha.getFullYear() + "/ " + fecha.getHours() + ":" + fecha.getMinutes())
+          }
+          this.groupService.putGroup(this.id, this.b.Name, this.b.Description, this.b.usserid, this.b.ussename, this.b.Users, this.b.Public, this.b.imgUrl).subscribe(res => { })
+        })
+      })
+    } else {
+
+      this.groupService.getGroup(this.id).subscribe(res => {
+        this.b = res as Group;
+        let fecha = new Date()
+        this.b.Public[this.b.Public.length] = {
+          idUser: localStorage.getItem("id"), Name: localStorage.getItem("name"), imagen: "none", cont: x,
+          lDate: (fecha.getDate() + "/" + fecha.getMonth() + "/" + fecha.getFullYear() + "  " + fecha.getHours() + ":" + fecha.getMinutes())
+        }
+        this.groupService.putGroup(this.id, this.b.Name, this.b.Description, this.b.usserid, this.b.ussename, this.b.Users, this.b.Public, this.b.imgUrl).subscribe(res => { })
+      })
+    }
+  }
+
+
+  seguirUsuario() {
+    this.usuarioservice.getusuario(localStorage.getItem("id")).subscribe(res => {
+      let b = res as Usuario;
+      if (this.seguidor == true) {
+        var a = b.Group.length
+        for (var i = 0; i <= a - 2; i++) {
+          if (b.Group[i].id ==this.id) {
+            for (var ii = i; ii <= b.Group.length - 2; ii++) {
+              b.Group[ii] = b.Group[ii + 1]
+            }
+          }
+        }
+        b.Group.length =b.Group.length - 1
+      }
+      if (this.seguidor == false) {
+        b.Group[b.Group.length] = { name:this.b.Name,id:this.id}
+      }
+      this.usuarioservice.putusuarios(b._id,b.name,b.password,b.mail,b.tipeuser,b.like1,b.like2,b.like3,b.config,b.Group,b.Like,b.Chat).subscribe(res => {this.follower();
+      console.log(res)})
+    })
+  }
+
+
+  tabla(){
+    for(var i=0;i<=this.b.Users.length-1;i++){
+let tr = document.createElement("tr")
+document.getElementById("tabla").appendChild(tr)
+let td = document.createElement("td")
+td.innerHTML=this.b.Users[i].Name
+tr.appendChild(td)
+td = document.createElement("td")
+tr.appendChild(td)
+let div=document.createElement("div")
+div.className="switch"
+td.appendChild(div)
+let label =document.createElement("label")
+div.appendChild(label)
+let input =document.createElement("input")
+input.id="User"+i
+input.type="checkbox"
+if(this.b.Users[i].Admin=="1"){
+  input.checked=true
+}
+input.value=this.b.Users[i].idUser
+label.appendChild(input)
+let span=document.createElement("span")
+span.className="lever"
+label.appendChild(span)
+  }
 }
 
+prueba(){
+  this.groupService.getGroup(this.id).subscribe(res => {
+    this.b = res as Group;
+  for(var i=0;i<=this.b.Users.length-1;i++){
+    let valor=<HTMLInputElement>document.getElementById("User"+i)
+for(var i=0;i<=this.b.Users.length-1;i++){
+  if(this.b.Users[i].idUser==valor.value){
+    console.log(valor.checked)
+    if(valor.checked==true){this.b.Users[i].Admin="1"}
+  }if(valor.checked==false) {this.b.Users[i].Admin="0"}
+}
+  }
+  this.groupService.putGroup(this.id, this.b.Name, this.b.Description, this.b.usserid, this.b.ussename, this.b.Users, this.b.Public, this.b.imgUrl).subscribe(res => { })
+})
+}
 
-
-
-
-
-
-
+}

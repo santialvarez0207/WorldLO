@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Exam } from '../Models/Exam';
-import { Creacioncomponent } from '../Components/Creacion/Creacion.component';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,24 +12,42 @@ export class ExamService {
   getExams() {
     return this.http.get<Exam[]>(this.URI);
   }
-  postExam(title: string, intro: string, usserid: string, ussename: string, img: File, questionid: Array<string>, cant: number) {
-    const fd = new FormData();
-    for (var i = 0; i <= cant - 1; i++) {
-      fd.append('questionid', questionid[i])
-    }
-    fd.append('title', title);
-    fd.append('intro', intro);
-    fd.append('usserid', usserid);
-    fd.append('ussename', ussename);
-    fd.append('image', img);
+  postExam(title:string,intro:string,usserid:string,ussename:string,configuracion:Array<string>,
+      questionid: Array<{
+      preguntas: Array<string>;
+      correcta:string;
+      pregunta:string;
+  }>,
+    imagen:Array<string>,orden:Array<string>) {
+    const fd = new Exam();
+    fd.title=title;
+    fd.intro=intro;
+    fd.usserid=usserid;
+    fd.ussename=ussename;
+    fd.configuracion=configuracion;
+    fd.questionid=questionid;
+    fd.imagen=imagen;
+    fd.orden=orden;
+
 
     return this.http.post(this.URI, fd);
 
 
   }
-  putExam(id: string, title: string, intro: string, usserid: string, ussename: string, questionid: Array<string>) {
+  putExam(id: string, title:string,intro:string,usserid:string,ussename:string,configuracion:Array<string>,
+    questionid: Array<{
+    preguntas: Array<string>;
+    correcta:string;
+    pregunta:string;
+}>,
+  imagen:Array<string>,orden:Array<string>,    
+  respondidas: Array<{
+    respuestas: Array<string>;
+    nombre: string;
+    puntuacion: number;
+}>) {
 
-    return this.http.put(`${this.URI}/${id}`, { id, title, intro, usserid, ussename, questionid });
+    return this.http.put(`${this.URI}/${id}`, { id, title, intro, usserid, ussename, questionid,configuracion,imagen,orden,respondidas});
   }
 
   deleteExam(id: string) {

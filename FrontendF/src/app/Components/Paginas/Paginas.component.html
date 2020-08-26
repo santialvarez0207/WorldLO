@@ -1,10 +1,9 @@
  <!-- formularios -->
-<div class="card z-depth-3 " style="width: 80%; left: 10%;">
-    <div id="title"></div>
+<div class="card z-depth-3 " style="width: 80%; left: 10%; margin-top: 5.5%;">
+    <div id="title" ></div>
+    <i class="material-icons medium" style="margin-left: 85%;margin-top: -9%; display:inline-block;" id="fav" (click)="seguir();">favorite</i><h3 style="margin-top: -9%; display:inline-block;" id="like">a</h3>
 </div>
 <div class="card z-depth-3 " style="width: 80%; left: 10%;">
-    <i class="material-icons medium" style="left: 20%;" id="fav" (click)="favorite();">favorite</i>
-    <h5 style="display: inline-block;">Favorite?, if you like press heart</h5>
 </div>
 <div class="card z-depth-3 " style="width: 80%; left: 10%;">
     <div id="sector"></div>
@@ -13,7 +12,7 @@
 <div id="contenido"></div>
 
 <button class="waves-effect waves-light btn"
-    style="color:#ffc305;  background:#581845; display: block; margin-left:10% ;height: 10%; width: 80%;" id="sector1"
+    style="  background:#3c0074; display: block; margin-left:10% ;height: 10%; width: 80%;" id="sector1"
     (click)="delete()">
 </button>
 <br>
@@ -23,11 +22,11 @@
             placeholder="Enter your coment of the article max 700 characters"
             style="margin-left: 2%; width: 96%;"></textarea>
         <button class="Come1" class="waves-effect waves-light btn"
-            style="color:#ffc305;  background:#581845; display: block; margin-left:2% ;"> Send a new coment</button>
+            style=" background:#3c0074; display: block; margin-left:2% ;"> Send a new coment</button>
     </form>
 </div>
 <br>
-<h4 style="margin-left: 10%;color:#581845 ;">Seccion de comentarios</h4>
+<h4 style="margin-left: 10%;color:#3c0074 ;">Seccion de comentarios</h4>
 <div style="margin-left: 13%;" id="ComentariosN"></div>
 <div style="margin-left: 13%;" id="Comentarios"></div>
 

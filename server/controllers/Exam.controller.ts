@@ -10,8 +10,8 @@ export async function getExams(req: Request, res: Response): Promise<Response> {
 };
 
 export async function createExam(req: Request, res: Response): Promise<Response> {
-    const {title,intro,usserid,ussename,questionid,data} = req.body;
-    const newexam = {title,intro,usserid,ussename,data,questionid,imgUrl:req.file.path};
+    const {title,intro,usserid,ussename,configuracion,questionid,respondidas,imagen,orden} = req.body;
+    const newexam = {title,intro,usserid,ussename,configuracion,questionid,respondidas,imagen,orden};
     const exam = new Exam(newexam);
     await exam.save();
     return res.json(exam);
@@ -26,14 +26,12 @@ export async function getExam(req: Request, res: Response): Promise<Response> {
 export async function deleteExam(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
     const exam = await Exam.findByIdAndRemove(id) as IExam;
-    return res.json({ message: 'exam Deleted' });
+    return res.json(exam);
 };
 
 export async function updateExam(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
-    const {title,intro,usserid,ussename,questionid,data} = req.body;
-    const updatedExam = await Exam.findByIdAndUpdate(id, {title,intro,usserid,ussename,questionid,data});
-    return res.json({
-        message: 'Successfully updated',
-    });
+    const {title,intro,usserid,ussename,configuracion,questionid,respondidas,imagen,orden} = req.body;
+    const updatedExam = await Exam.findByIdAndUpdate(id, {title,intro,usserid,ussename,configuracion,questionid,respondidas,imagen,orden});
+    return res.json(updatedExam);
 }

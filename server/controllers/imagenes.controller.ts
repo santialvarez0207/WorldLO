@@ -10,7 +10,7 @@ export async function getImageness(req: Request, res: Response): Promise<Respons
 };
 
 export async function createImagenes(req: Request, res: Response): Promise<Response> {
-    const newimagen = {U:req.file.path}; // se crea una constante con los datos
+    const newimagen = {U:req.files}; // se crea una constante con los datos
     const imagen = new Imagenes(newimagen); // se adapta al modelo de mongo y se envia a este
     await imagen.save(); // devuelve una respuesta con todo lo enviado
     return res.json(imagen);

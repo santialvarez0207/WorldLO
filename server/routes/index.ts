@@ -30,7 +30,7 @@ router.route('/Paginas/:id')
 //Examenes------------------------------------------
 router.route('/Exam')
     .get(getExams)
-    .post(upload.single('image'),createExam);
+    .post(createExam);
 
 router.route('/Exam/:id')
     .delete(deleteExam)
@@ -66,7 +66,7 @@ router.route('/PublicG/:id')
 //Imagenes------------------------------------------
 router.route('/Imagenes')
     .get(getImageness)
-    .post(upload.single('image'),createImagenes);
+    .post(upload.array('image',20),createImagenes);
 
 router.route('/Imagenes/:id')
     .delete(deleteImagenes)

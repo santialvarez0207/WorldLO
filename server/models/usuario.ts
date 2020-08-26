@@ -8,9 +8,24 @@ tipeuser:String,
 like1:String,
 like2:String,
 like3:String,
-NomLL:String,
-LLreid:[String],
-G:[String],
+
+Group:[{
+name:String,
+id:String,
+}],
+
+Like:[{
+name:String,
+id:String,
+}],
+
+Chat:[{
+idFriend:String,
+NameFriend:String,
+mensaje:[String],
+orden:[String],
+}],
+
 config:[String],
 }); // esta es la estructura que se envia a mongod
 
@@ -23,9 +38,23 @@ export interface Iusuario extends Document{
     like2:string;
     like3:string;
 
-      NomLL:string;
-      LLreid:[string];
-      G:[string];
+    Group:[{
+      name:string;
+      id:string;
+      }];
+      
+      Like:[{
+      name:string;
+      id:string;
+      }];
+      
+      Chat:[{
+      idFriend:string;
+      NameFriend:string;
+      mensaje:[string];
+      orden:[string];
+      }];
+      
       config:[string];
 
 } //estructura con la que se trabaja en el procesado de backend

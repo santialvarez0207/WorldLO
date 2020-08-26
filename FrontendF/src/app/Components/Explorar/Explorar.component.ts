@@ -79,7 +79,7 @@ export class Explorarcomponent implements OnInit {
       if (this.i + 5 <= this.h) {
         for (this.i; this.i <= this.i + 5; this.i++) {
           this.srt = 'http://localhost:3000/' + res[this.i].imgUrl;
-          this.Imagen(this.srt,  './Group/' + x[this.i]._id,x[this.i].Description,res[this.i].Name,res[this.i].Admins[0]);
+          this.Imagen(this.srt,  './Group/' + x[this.i]._id,x[this.i].Description,res[this.i].Name,res[this.i].ussename);
         }
       } else {
         this.Imagen("http://localhost:3000/Storage\\Notfound.png", "","Error","Error","Error");

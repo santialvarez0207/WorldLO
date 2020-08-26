@@ -13,9 +13,12 @@ export class ImagenesService {
   getImageness() {
     return this.http.get<Imagenes[]>(this.URI);
   }
-  postImagenes(img:File) {
+  postImagenes(img:Array<File>,cant:number) {
     const fd = new FormData();
-    fd.append('image', img);
+    for (var i = 0; i <= cant-1; i++) {
+      fd.append('image', img[i]);
+    }
+    
 
     return this.http.post(this.URI, fd);
 
