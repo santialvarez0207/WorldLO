@@ -7,6 +7,7 @@ _id:string;
   like1:string;
   like2:string;
   like3:string;
+  solis:Array<string>;
 
   Group:Array<{
     name:string;
@@ -19,6 +20,7 @@ _id:string;
     }>;
     
     Chat:Array<{
+    ultimo:string;
     idFriend:string;
     NameFriend:string;
     mensaje:Array<string>;

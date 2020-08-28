@@ -31,7 +31,7 @@ export async function deleteUser(req: Request, res: Response): Promise<Response>
 
 export async function updateUser(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
-    const {name,mail,password,tipeuser,like1,like2,like3,Group,config,chat,Like } = req.body;
-    const updatedUser = await User.findByIdAndUpdate(id, {name,mail,password,tipeuser,like1,like2,like3,Group,config,chat,Like});
+    const {name,mail,password,tipeuser,like1,like2,like3,Group,config,Chat,Like,solis } = req.body;
+    const updatedUser = await User.findByIdAndUpdate(id, {name,mail,password,tipeuser,like1,like2,like3,Group,config,Chat,Like,solis});
     return res.json(updatedUser); 
 }

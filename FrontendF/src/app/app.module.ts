@@ -19,6 +19,7 @@ import { GVisualizecomponent  } from './Components/Gvisualize/Gvisualize.compone
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { HerramientasComponent } from './Components/herramientas/herramientas.component';
 import { DeathStarComponent } from './components/death-star/death-star.component';
+import { ChatComponent } from './Components/chat/chat.component';
 
 
 //modulos que utilizaran los diferentes archivos o sectores
@@ -39,6 +40,7 @@ import { DeathStarComponent } from './components/death-star/death-star.component
     AboutusComponent,
     HerramientasComponent,
     DeathStarComponent,
+    ChatComponent,
   ],
   //modulos
   imports: [

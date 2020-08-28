@@ -29,7 +29,7 @@ this.Formato();
  }
 
   adduser(name: HTMLInputElement,password: HTMLInputElement,mail: HTMLInputElement){
-this.UsuarioService.putusuarios(localStorage.getItem("id"),name.value,password.value,mail.value,this.b.tipeuser,this.b.like1,this.b.like2,this.b.like3,this.b.config,this.b.Group,this.b.Like,this.b.Chat).subscribe(res=>{  
+this.UsuarioService.putusuarios(localStorage.getItem("id"),name.value,password.value,mail.value,this.b.tipeuser,this.b.like1,this.b.like2,this.b.like3,this.b.config,this.b.Group,this.b.Like,this.b.Chat,this.b.solis).subscribe(res=>{  
   localStorage.setItem("name",name.value);
   localStorage.setItem("Correo",mail.value);
   M.toast({html:'update Successfuly'});}

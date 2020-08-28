@@ -1,0 +1,8 @@
+div.scroll_vertical {
+	height: 80vh;
+    overflow-y: scroll;
+}
+div.scroll_vertical2 {
+	height: 72vh;
+    overflow-y: scroll;
+}

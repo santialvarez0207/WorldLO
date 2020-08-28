@@ -394,7 +394,7 @@ video.appendChild(link)
         
         b.Like[b.Like.length] = { name:this.b.title,id:this.id}
       }
-      this.usuarioservice.putusuarios(b._id,b.name,b.password,b.mail,b.tipeuser,b.like1,b.like2,b.like3,b.config,b.Group,b.Like,b.Chat).subscribe(res => {this.follower();
+      this.usuarioservice.putusuarios(b._id,b.name,b.password,b.mail,b.tipeuser,b.like1,b.like2,b.like3,b.config,b.Group,b.Like,b.Chat,b.solis).subscribe(res => {this.follower();
       console.log(res)})
     })
   }

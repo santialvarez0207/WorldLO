@@ -8,7 +8,7 @@ tipeuser:String,
 like1:String,
 like2:String,
 like3:String,
-
+solis:[String],
 Group:[{
 name:String,
 id:String,
@@ -20,6 +20,7 @@ id:String,
 }],
 
 Chat:[{
+ultimo:String,
 idFriend:String,
 NameFriend:String,
 mensaje:[String],
@@ -37,6 +38,7 @@ export interface Iusuario extends Document{
     like1:string;
     like2:string;
     like3:string;
+    solis:[string];
 
     Group:[{
       name:string;
@@ -49,6 +51,7 @@ export interface Iusuario extends Document{
       }];
       
       Chat:[{
+      ultimo:string;
       idFriend:string;
       NameFriend:string;
       mensaje:[string];

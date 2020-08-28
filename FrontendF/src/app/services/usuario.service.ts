@@ -25,9 +25,9 @@ export class UsuarioService {
   putusuarios(_id: string, name: string, password: string, mail: string, tipeuser: string,
     like1:string,like2:string,like3:string, config:Array<string>,
     Group:Array<{name:string;id:string;}>,Like:Array<{name:string;id:string;}>,
-    Chat:Array<{idFriend:string;NameFriend:string;mensaje:Array<string>;orden:Array<string>;}>) 
+    Chat:Array<{ultimo:string;idFriend:string;NameFriend:string;mensaje:Array<string>;orden:Array<string>;}>,solis:Array<string>) 
   {
-    return this.http.put<Usuario[]>(this.URI + `/${_id}`, {name, password, mail, tipeuser,like1,like2,like3,config,Group,Like,Chat });
+    return this.http.put<Usuario[]>(this.URI + `/${_id}`, {name, password, mail, tipeuser,like1,like2,like3,config,Group,Like,Chat,solis });
   }
   getusuario(id: string) {
     return this.http.get<Usuario>(this.URI + `/${id}`);

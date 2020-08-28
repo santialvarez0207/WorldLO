@@ -8,7 +8,7 @@ import { AppComponent } from '../../app.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { text } from 'express';
 import { PublicGService } from 'src/app/services/PublicG.service'
-import { Imagenes } from 'src/app/Models/Imagenes';
+import { Imagenes } from 'src/app/Models/imagenes';
 import { ImagenesService } from "../../services/imagenes.service";
 
 declare var M: any; // esta es una variable que utiliza materialize
@@ -288,7 +288,7 @@ export class GVisualizecomponent implements OnInit {
       if (this.seguidor == false) {
         b.Group[b.Group.length] = { name:this.b.Name,id:this.id}
       }
-      this.usuarioservice.putusuarios(b._id,b.name,b.password,b.mail,b.tipeuser,b.like1,b.like2,b.like3,b.config,b.Group,b.Like,b.Chat).subscribe(res => {this.follower();
+      this.usuarioservice.putusuarios(b._id,b.name,b.password,b.mail,b.tipeuser,b.like1,b.like2,b.like3,b.config,b.Group,b.Like,b.Chat,b.solis).subscribe(res => {this.follower();
       console.log(res)})
     })
   }
