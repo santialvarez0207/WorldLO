@@ -6,10 +6,11 @@ import upload from '../Libs/storage' //libreria que se utiliza para subir los ar
 import { getQuestions, createQuestion, getQuestion, deleteQuestion, updateQuestion } from '../controllers/question.controller'
 import { getExams, createExam, getExam, deleteExam, updateExam } from '../controllers/Exam.controller'
 import { getUsers, createUser, getUser, deleteUser, updateUser } from '../controllers/usuario.controller'
-import { getPaginas, createPagina, getPagina,updatePagina,deletePagina } from '../controllers/paginas.controller';
+import { getPaginas, createPagina, getPagina, updatePagina, deletePagina } from '../controllers/paginas.controller';
 import { getGroup, createGroup, getGroups, deleteGroup, updateGroup } from '../controllers/Group.controller'
-import { getPublicG, createPublicG, getPublicGs,updatePublicG,deletePublicG } from '../controllers/PublicG.controller';
-import { getImagenes, createImagenes, getImageness,updateImagenes,deleteImagenes } from '../controllers/imagenes.controller';
+import { getPublicG, createPublicG, getPublicGs, updatePublicG, deletePublicG } from '../controllers/PublicG.controller';
+import { getImagenes, createImagenes, getImageness, updateImagenes, deleteImagenes } from '../controllers/imagenes.controller';
+import { getVideo, createVideo, getVideos, updateVideo, deleteVideo } from '../controllers/video.controller';
 // rutas----
 router.route('/Usuarios')
     .get(getUsers)
@@ -22,7 +23,7 @@ router.route('/Usuarios/:id')
 //paginas------------------------------------------
 router.route('/Paginas')
     .get(getPaginas)
-    .post(upload.single('image'),createPagina);
+    .post(upload.single('image'), createPagina);
 router.route('/Paginas/:id')
     .delete(deletePagina)
     .get(getPagina)
@@ -48,7 +49,7 @@ router.route('/Question/:id')
 //Grupos------------------------------------------
 router.route('/Group')
     .get(getGroups)
-    .post(upload.single('image'),createGroup);
+    .post(upload.single('image'), createGroup);
 
 router.route('/Group/:id')
     .delete(deleteGroup)
@@ -66,12 +67,22 @@ router.route('/PublicG/:id')
 //Imagenes------------------------------------------
 router.route('/Imagenes')
     .get(getImageness)
-    .post(upload.array('image',20),createImagenes);
+    .post(upload.array('image'), createImagenes);
 
 router.route('/Imagenes/:id')
     .delete(deleteImagenes)
     .get(getImagenes)
     .put(updateImagenes);
+//Video------------------------------------------
+router.route('/Debate')
+    .get(getVideos)
+    .post(createVideo);
+
+router.route('/debate/:id')
+    .delete(deleteVideo)
+    .get(getVideo)
+    .put(updateVideo);
+
 
 
 export default router;

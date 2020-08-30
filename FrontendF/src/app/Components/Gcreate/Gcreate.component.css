@@ -5,14 +5,14 @@
         left: 2%;
         width: 20%  20% 20px 20px;
         top:40px;
-        color: #581845;
+        color: #3c0074;
         
         }
         input:focus {
-            border-bottom: 1px solid #581845 !important;
-            box-shadow: 0 1px 0 0 #581845 !important;
+            border-bottom: 1px solid #3c0074 !important;
+            box-shadow: 0 1px 0 0 #3c0074 !important;
           }
     
           label.active {
-            color: #581845 !important;
+            color: #3c0074 !important;
           }

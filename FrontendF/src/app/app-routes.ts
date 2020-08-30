@@ -13,6 +13,8 @@ import { AboutusComponent  } from './Components/aboutus/aboutus.component';
 import { HerramientasComponent} from './Components/herramientas/herramientas.component';
 import { DeathStarComponent} from './Components/death-star/death-star.component';
 import { ChatComponent} from './Components/chat/chat.component';
+import { DebateComponent} from './Components/debate/debate.component';
+import { VerdebateComponent} from './Components/verdebate/verdebate.component';
 
 //la redireccion de las paginas dentro de angular
 const app_routes : Routes =[
@@ -28,6 +30,8 @@ const app_routes : Routes =[
     {path: 'Group/:id',component:  GVisualizecomponent},
     {path: 'aboutus',component:  AboutusComponent},
     {path: 'Chat',component:  ChatComponent},
+    {path: 'Debate',component:  DebateComponent},
+    {path: 'streaming/:id',component:  VerdebateComponent},
     {path: 'DeathStarNoutilizarhastaqueestesseguroxdkidhgoidhgoilhdgflik',component:  DeathStarComponent},
     {path: '',pathMatch:'full',redirectTo:''}
 ];

@@ -81,7 +81,11 @@ export class Paginascomponent implements OnInit {
     Texto.textContent = a;
     document.getElementById("title").appendChild(Texto);
     let x =document.getElementById("like")
-    x.innerHTML=this.b.like.toString()
+    if(this.b.like != null){
+      x.innerHTML=this.b.like.toString()
+    }else{
+      x.innerHTML="0"}
+    
   }
 
   Intro(a: string) {
@@ -359,6 +363,9 @@ video.appendChild(link)
         }
         like=like-1;
         this.b.likeid.length = this.b.likeid.length - 1
+        if(like<0){
+          like=0;
+        }
       }
       if (this.favoritestate == false) {
         like++;

@@ -68,11 +68,13 @@ export class ChatComponent implements OnInit, OnDestroy {
     });
 
   }
+  //
 
   usuarios(nombre: string, mensajes: string, mensaje: Array<string>, orden: Array<string>, id: string) {
     let a = document.createElement("a");
     a.className = "collection-item"
     a.innerHTML = nombre
+    a.style.color ="#3c0074"
 
     a.addEventListener('click', this.chat.bind(null, mensaje, orden, id));
 
@@ -94,6 +96,10 @@ export class ChatComponent implements OnInit, OnDestroy {
     master.id = "master"
     document.getElementById("mensajes").appendChild(master)
     master.className = c
+    let bottom= document.getElementById("envios")
+    bottom.className="waves-effect btn";
+    let mensaje= document.getElementById("mensaje")
+    mensaje.className="input-field";
     for (var ii = 0; ii <= a.length - 1; ii++) {
       let div = document.createElement("div");
       div.className = "card"

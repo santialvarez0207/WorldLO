@@ -6,6 +6,7 @@ import {PageService} from "../../services/Page.service";
 import {PublicGService} from "../../services/PublicG.service";
 import {QuestionService} from "../../services/question.service";
 import {UsuarioService} from "../../services/usuario.service";
+import {DebateService} from "../../services/debate.service";
 
 //------------------------------------------
 
@@ -16,6 +17,7 @@ import {Page} from "../../Models/Page";
 import {PublicG} from "../../Models/PublicG";
 import {Question} from "../../Models/question";
 import {Usuario} from "../../Models/usuario";
+import {Debate} from "../../Models/Debate";
 @Component({
   selector: 'app-death-star',
   templateUrl: './death-star.component.html',
@@ -25,7 +27,7 @@ export class DeathStarComponent implements OnInit {
 
   constructor(public ExamService:ExamService,public GroupService:GroupService,public ImagenesService:ImagenesService,
     public PageService:PageService,public PublicGService:PublicGService,public QuestionService:QuestionService,
-    public UsuarioService:UsuarioService) { }
+    public UsuarioService:UsuarioService, public DebateService:DebateService) { }
 
   ngOnInit(): void {
     this.ExamService.getExams().subscribe(res=>{
@@ -83,6 +85,14 @@ export class DeathStarComponent implements OnInit {
       var x = res.length;
       for (var i=2;i<=x-1;i++){
         this.UsuarioService.deleteusuarios(y[i]._id).subscribe(res=>{})
+      }
+    })
+
+    this.DebateService.getDebates().subscribe(res=>{
+      var y = res as Debate[];
+      var x = res.length;
+      for (var i=0;i<=x-1;i++){
+        this.DebateService.deleteDebate(y[i]._id).subscribe(res=>{})
       }
     })
 
