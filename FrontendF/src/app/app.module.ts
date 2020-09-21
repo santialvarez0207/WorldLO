@@ -17,7 +17,9 @@ import { ExamcVisualiomponent } from './Components/Examenes/Examenes.component';
 import { Gcreatecomponent } from './Components/Gcreate/Gcreate.component';
 import { GVisualizecomponent  } from './Components/Gvisualize/Gvisualize.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
-import { HerramientasComponent } from './Components/herramientas/herramientas.component';
+
+import { OrganizerComponent } from './components/organizer/organizer.component';
+
 
 
 //modulos que utilizaran los diferentes archivos o sectores
@@ -36,7 +38,7 @@ import { HerramientasComponent } from './Components/herramientas/herramientas.co
     Gcreatecomponent,
     GVisualizecomponent,
     AboutusComponent,
-    HerramientasComponent,
+    OrganizerComponent,
   ],
   //modulos
   imports: [
@@ -45,7 +47,7 @@ import { HerramientasComponent } from './Components/herramientas/herramientas.co
     FormsModule,
     HttpClientModule,
     app_routing,
-    InfiniteScrollModule
+    InfiniteScrollModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

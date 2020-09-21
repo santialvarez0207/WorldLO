@@ -7,12 +7,6 @@
 width:100%;
 }
 
-.tata{ 
-display: inline-block; /*escribir consecutivo*/
-
-position: relative;
-left:60%;
-}
 
 .s{
     margin: 0px 2% 0px 0px ;
@@ -23,7 +17,7 @@ left:60%;
     position: fixed;
     background: linear-gradient(to right, #3c0074, #020690);
 color: white;
-top:98%;
+bottom: 0vh;
 text-align: center;
 left: 25%;
 width:50%;

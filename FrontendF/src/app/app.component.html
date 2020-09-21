@@ -1,3 +1,5 @@
+
+
 <nav class="myCanvas">
   <div class="nav-wrapper">
     <a href="/Explorar"><h5 style="color: white ; margin-left:2%;" [routerLink]="['Explorar']" class="brand-logo">WorldLO</h5></a>
@@ -5,8 +7,15 @@
 
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li> <a class="s btn-flat waves-effect waves-leght " [routerLink]="['Explorar']">Explore</a> </li>
-      <li> <a class="s btn-flat waves-effect waves-leght" [routerLink]="['herramientas']">tools</a> </li>
+      <li> <a *ngIf="true" class="s dropdown-trigger btn-flat waves-effect waves-leght" data-target="tools">tools</a> </li>
       <li> <a *ngIf="true" class="s dropdown-trigger btn-flat waves-effect waves-leght" data-target="drop">Create</a> </li>
+
+      <li> 
+        <ul id="tools" class="dropdown-content" style=" background: #020690;">
+          <li> <a class="waves-effect waves-leght" [routerLink]="['organizer']" style="color:white">organizer</a></li>
+        </ul>
+      </li>
+
       <li> 
         <ul id="drop" class="dropdown-content" style=" background: #020690;">
           <li><a class="waves-effect waves-leght" [routerLink]="['Creacion']" style="color:white">Pages</a></li>
@@ -36,10 +45,7 @@
     </div>
   </ul>
 </div>
-<br>
 <router-outlet><!--Aca se muestra las paginas--></router-outlet>
-
-<br><br>
 <footer class="Endcredits">
   <a class="Endcredits" style="z-index: 10;">Copyright &copy; Sico .Ltd all rightsreserved 2020 </a>
 </footer>

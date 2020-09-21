@@ -1,0 +1,214 @@
+
+/*
+    --color-primario: #3c0074 ;
+    --color-secundario: #20115b;
+    --color-terciario: #7232f2;
+    --color-resaltar: #020690;
+*/
+
+body{
+    background-color: #ffffff;
+}
+
+
+.contenedor{
+
+    position: relative;
+    top: 64px;
+    height: 91vh;
+    min-height: 600px;
+    min-width: 900px;
+    
+}
+section{
+    width: 80%;
+    background: #ffffff;
+    height: 100%;
+    padding-top: 1%;
+    float: left;
+}
+
+
+/*--------------------------------------------------------------------------
+panel izquierdo de creacion
+--------------------------------------------------------------------------*/
+
+.panel-creacion{
+    width: 23%;
+    height: 98%;
+    position: relative;
+    margin: 0% 1%;
+    padding-top: 2%;
+    background: linear-gradient(to right, #3c0074,#7232f2,#3c0074);
+    float: left;
+}
+.panel-C-A{
+    margin: 0% 4% 2% 4%;
+    width: 92%;
+    height: 30%;
+    background-color: #3c0074;
+}
+.panel-C-B{
+    
+    margin: 4% 4% 2% 4%;
+    width: 92%;
+    height: 65%;
+    background-color: #3c0074;
+    opacity: 0.5;
+}
+
+
+/*--------------------------------------------------------------------------
+panel central de organizacion
+--------------------------------------------------------------------------*/
+
+.panel-org{
+    width: 72%;
+    height: 98%;
+    margin: 0% 1%;
+    padding-top: 2%;
+    background: linear-gradient(to top, #ffffff,#7232f2,#ffffff);
+    float: left;
+}
+.carousel{
+    height: 98%;
+    width: 100%;
+}
+.dia{
+    background-color: #020690 ;
+    width: 40%;
+    height: 100%;
+    min-height: 600px;
+    min-width: 286px;
+    padding-bottom: 4px;
+}
+.drop_here{
+    width: 96%;
+    height: 80%;
+    margin: 4% 2% 0% 2%;
+    background-color: #ffffff;
+    opacity: 0.2;
+}
+
+
+
+/*--------------------------------------------------------------------------
+fecha
+--------------------------------------------------------------------------*/
+.fecha{
+    width: 96%;
+    height: 80px;
+    background: linear-gradient(to right, #3c0074,#7232f2,#3c0074);
+    opacity: 0.5;
+    margin: 2%;
+}
+
+.hoy{
+    border-style: solid;
+    border-color: #ffffff;
+}
+.dia_sem{
+    font-size: 50px;
+    color: #ffffff;
+    margin: 0%;
+    display: inline-block;
+}
+.cajon_fecha{
+    display: inline-block;
+    border-left-style: solid;
+    border-color: #ffffff;
+    margin-left: 5px;
+    padding-left: 5px;
+}
+.contenido_fecha{
+    color: #ffffff;
+    margin: 0%;
+}
+
+
+/*--------------------------------------------------------------------------
+aside
+--------------------------------------------------------------------------*/
+aside{
+    width: 20%;
+    height: 100%;
+    background: linear-gradient(to top,#363cff,#020690, #363cff);
+    float: left;
+}
+.titulo_aside{
+    font-size: 25px;
+    font-family: cursive;
+    margin: 2% 5% 2% 5%;
+    text-align: center;
+    color: #ffffff;
+}
+
+
+/*--------------------------------------------------------------------------
+ventana emergente
+--------------------------------------------------------------------------*/
+
+.overlay{
+    background-color: rgba(0, 0, 0,.3);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+}
+.overlay.active {
+	visibility: visible;
+}
+.pop_up{
+    background-color: #ffffff;
+    width: 620px;
+    height: 400px;
+}
+
+.caja_informacion-note{
+    width: 65%;
+    height: 390px;
+    margin: 1%;
+    
+}
+
+.input-field {
+    position: relative;
+    /* margin-top: 1rem; */
+    top: 10px;
+    margin-bottom: 30px;
+}
+.text{
+    margin-top: 0%;
+    max-height: 250px;
+}
+
+/*--------------------------------------------------------------------------
+elementos 
+--------------------------------------------------------------------------*/
+hr{
+
+    background-color: #20115b;
+    border: 0px;
+    height: 1px;
+    margin: 2%;
+}
+.bordes{
+    border-style: solid;
+    border-color: #20115b;
+}
+.Bcrear{
+    position: relative;
+    top: 2%;
+    background-color: #020690 ;
+}
+
+
+
+
