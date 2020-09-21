@@ -1,18 +1,56 @@
-<br><br>
-<div id="sector" class="card z-depth-3" style="margin-left: 2%;width: 70%;"></div>
+
+<div style="width: 80%; margin-left: 10%; margin-top: 6%;">
+<div class="parallax-container" style="width: 100%; margin-left: 0%; height: 300px;">
+    <div class="parallax"><img src="https://www.xtrafondos.com/wallpapers/nubes-abstractas-iluminadas-4709.jpg" id="imagen"></div>
+    <button data-target="sector111" id="sector11" class="btn modal-trigger"
+    style=" margin-Left:2% ; background-color: #3c0074; display: inline-block; width: 20%;">followers</button>
+</div>
+
+<div class="section deep accent-4" style="width: 100%; margin-left: 0%;background-color:#3c0074; ">
+    <div class="row container">
+      <h2 class="header" style="color: white;" id="nombre">Parallax</h2>
+      <h5 id="indroduction" style="color: white;"></h5>
+    </div>
+    
+    <button id="seguir" style="width: 18%;margin-left: 80%;background-color:#020690;"class="waves-effect waves-light btn-small" (click)="seguir()"></button>
+</div>
 <button style="margin-Left:10% ;" id="sector1" (click)="delete()">
 </button>
-<br>
-<div class="card z-depth-3" style="margin-left: 2%;width: 70%;">
+</div>
+<div id="sector" class="card z-depth-3" style="margin-left: 10%;width: 80%;"></div>
+
+
+<div class="card z-depth-3" style="margin-left: 10%;width: 80%;" id="envios">
     <form>
-        <textarea name="cont" style="margin-left: 2%; width: 96%;" #coment
-            placeholder="Enter your coment of the article max 700 characters" class="materialize-textarea"></textarea>
-        <input  style="color:#ffc305;  background:#581845;width: 100%; "type="file" class="waves-effect waves-light btn" (change)="onPhotoSelected($event)" >
-        <br>
-        <button  style="color:#ffc305;  background:#581845;display: block;width: 100%;"class="waves-effect waves-light btn" > Send a new coment</button>
+        <textarea id="cont" style="margin-left: 2%; width: 96%;" class="materialize-textarea"></textarea>
+        <input  style="color:white;  background:#3c0074;width: 100%; "type="file" class="waves-effect waves-light btn" id="img">
+        <button  style="color:white;  background:#3c0074;display: block;width: 100%;"class="waves-effect waves-light btn" (click)="obtener()" >Send publication</button>
     </form>
 </div>
 <br><br><br><br>
-<div id="Public"></div>
+<div  id="Public"></div>
+
+<div class="switch">
+    <label>
+      <input type="checkbox">
+    </label>
+  </div>
+<div id="sector111" class="modal">
+    <div class="modal-content">
+        <table>
+            <thead>
+              <tr id="tablaE">
+                  <th>Name</th>
+                  <th>Admin</th>
+              </tr>
+            </thead>
+            <tbody id="tabla">
+                
+            </tbody>
+          </table>
+          <button class="btn modal-trigger"
+          style=" margin-Left:2% ; background-color: #3c0074; display: inline-block; width: 20%;" (click)="prueba()">followers</button>
+    </div>
+  </div>
 
 <br><br><br><br>

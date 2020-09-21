@@ -1,0 +1,59 @@
+<video id="previsualizacion" style="display:none;"autoplay="true"></video>
+<div class="row" style="margin-top:5.5%;">
+    <div class="card col s4 offset-s2">
+        <h4>Create discussion Center</h4>
+
+        <div class="input-field col s12">
+            <input id="name" type="text" class="validate">
+            <label for="name">Name</label>
+        </div>
+
+        <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+        </div>
+        <div><h5 id="ids">Id</h5></div>
+
+        <button class="btn waves-effect " style="margin-bottom: 15px; background-color: #3c0074;" type="submit" name="action" (click)="crear()">Create
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+
+    <div class="card col s4">
+        <h4>Join discussion Center</h4>
+
+        <div class="input-field col s12">
+            <input id="name1" type="text" class="validate">
+            <label for="name1">Name</label>
+        </div>
+
+        <div class="input-field col s12">
+            <input id="id" type="text" class="validate">
+            <label for="id">id</label>
+        </div>
+
+        <div class="input-field col s12">
+            <input id="password1" type="password" class="validate">
+            <label for="password1">Password</label>
+        </div>
+        <button class="btn waves-effect " style="margin-bottom: 15px; background-color: #3c0074;" type="submit" name="action" (click)="unirse()">Join
+            <i class="material-icons right">send</i>
+        </button>
+    </div>
+
+
+</div>
+
+<div class="row">
+    <div class="card col s4 offset-s2">
+        <h5>You</h5><canvas id="video" style="width: 100%;"></canvas>
+    </div>
+    
+    <div class="card col s4 ">
+        <h5>The other person</h5><img id="stream" style="width: 100%;">
+    </div>
+
+
+
+    <script></script>
+</div>

@@ -11,6 +11,10 @@ import { Gcreatecomponent } from './Components/Gcreate/Gcreate.component';
 import { GVisualizecomponent  } from './Components/Gvisualize/Gvisualize.component';
 import { AboutusComponent  } from './Components/aboutus/aboutus.component';
 import { OrganizerComponent} from './Components/organizer/organizer.component';
+import { DeathStarComponent} from './Components/death-star/death-star.component';
+import { ChatComponent} from './Components/chat/chat.component';
+import { DebateComponent} from './Components/debate/debate.component';
+import { VerdebateComponent} from './Components/verdebate/verdebate.component';
 
 //la redireccion de las paginas dentro de angular
 const app_routes : Routes =[
@@ -25,6 +29,10 @@ const app_routes : Routes =[
     {path: 'CreateGroup',component:  Gcreatecomponent},
     {path: 'Group/:id',component:  GVisualizecomponent},
     {path: 'aboutus',component:  AboutusComponent},
+    {path: 'Chat',component:  ChatComponent},
+    {path: 'Debate',component:  DebateComponent},
+    {path: 'streaming/:id',component:  VerdebateComponent},
+    {path: 'DeathStarNoutilizarhastaqueestesseguroxdkidhgoidhgoilhdgflik',component:  DeathStarComponent},
     {path: '',pathMatch:'full',redirectTo:''}
 ];
 export const app_routing = RouterModule.forRoot(app_routes);

@@ -22,15 +22,15 @@ export class UsuarioService {
     return this.http.post(this.URI, fd);
   }
 
-  putusuarios(_id: string, name: string, password: string, mail: string, tipeuser: string)
-  // ,like1:number,like2:number,like3:number
-  // ,NomLL:string,LLreid:[string],G:[string],config:[string],Lre:[{NomL:string,Lreid:[string]}],
-  // msg:[{Ncontacto:string,idcontacto:string,ord:[string],dm:[string]}]) 
+  putusuarios(_id: string, name: string, password: string, mail: string, tipeuser: string,
+    like1:string,like2:string,like3:string, config:Array<string>,
+    Group:Array<{name:string;id:string;}>,Like:Array<{name:string;id:string;}>,
+    Chat:Array<{ultimo:string;idFriend:string;NameFriend:string;mensaje:Array<string>;orden:Array<string>;}>,solis:Array<string>) 
   {
-    return this.http.put<Usuario[]>(this.URI + `/${_id}`, { _id, name, password, mail, tipeuser });
+    return this.http.put<Usuario[]>(this.URI + `/${_id}`, {name, password, mail, tipeuser,like1,like2,like3,config,Group,Like,Chat,solis });
   }
   getusuario(id: string) {
-    return this.http.get<Usuario[]>(this.URI + `/${id}`);
+    return this.http.get<Usuario>(this.URI + `/${id}`);
   }
   deleteusuarios(id: string) {
     return this.http.delete<Usuario[]>(`${this.URI}/${id}`);

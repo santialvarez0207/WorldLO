@@ -1,30 +1,33 @@
 export class Usuario { //los modelos estilo mongodb en el frontend para tener la estructura
+_id:string;
+  name:string;
+  password:string;
+  mail:string;
+  tipeuser:string;
+  like1:string;
+  like2:string;
+  like3:string;
+  solis:Array<string>;
 
-    _id: string;
-    name: string;
-    password: string;
-    mail: string;
-    tipeuser:string;
-    like1:number;
-    like2:number;
-    like3:number;
-
+  Group:Array<{
+    name:string;
+    id:string;
+    }>;
     
-    NomLL:string;
-    LLreid:[string];
-    G:[string];
-    config:[string];
-
-    Lre:[{
-      NomL:string;
-      Lreid:[string];
-    }];
-    msg:[{
-      Ncontacto:string;
-      idcontacto:string;
-      ord:[string];
-      dm:[string];
-  }];
+    Like:Array<{
+    name:string;
+    id:string;
+    }>;
+    
+    Chat:Array<{
+    ultimo:string;
+    idFriend:string;
+    NameFriend:string;
+    mensaje:Array<string>;
+    orden:Array<string>;
+    }>;
+    
+    config:Array<string>;
 
 
     

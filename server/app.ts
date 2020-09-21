@@ -5,8 +5,9 @@ import cors from 'cors';
 
 import indexRoutes from './routes/index'
 
+
 // inicializacion de variable de express para poder ser utilizados
-const app: Application = express();
+const app : Application = express();
 
 // configuracion del puerto
 app.set('port', process.env.PORT || 3000);//definicion del puerto (enviadoporelhost||pordefecto3000)
@@ -15,7 +16,6 @@ app.set('port', process.env.PORT || 3000);//definicion del puerto (enviadoporelh
 app.use(morgan('dev')); //sirve para mostrar todo lo que pasa por consola (get,delete...etc etc)
 app.use(cors());
 app.use(express.json());//para decile al servidor que lea
-
 // rutas donde se accederan todos los metodos de peticion... es decir este archivo contendra todas las rutas para hacer utilizacion de esta
 app.use('/api', indexRoutes);
 

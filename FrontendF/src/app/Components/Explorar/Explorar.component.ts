@@ -18,6 +18,8 @@ export class Explorarcomponent implements OnInit {
   declare i: number;
   srt: string;
   busqueda: number=1;
+  valor:string="0";
+  titulo:string="";
 
 
   constructor(public pageService: PageService, private router: Router,public groupService: GroupService) { }
@@ -54,18 +56,39 @@ export class Explorarcomponent implements OnInit {
  this.Prueba1();
 
  }
+ clasificacion(){
+  let valor= <HTMLSelectElement>document.getElementById("categoria")
+  this.valor=valor.value
+  let titulo= <HTMLSelectElement>document.getElementById("title")
+  this.titulo=titulo.value.toLowerCase();
+  if (this.busqueda==1){
+    this.paginas()
+  }
+  if (this.busqueda==2){
+    this.grupos()
+  }
+  
+
+ }
 
   Prueba1() { // segun lo que este pagina o grupos, mediante el scrolling se genera lo que corresponda y si no hay mas en la base de datos se genera una predeterminado de error
     if (this.busqueda==1){
     this.pageService.getPaginas().subscribe(res => {
       this.pageService.page = res as Page[];
       this.h = this.pageService.page.length;
+      
 
       if (this.i + 5 <= this.h) { // si es 1 es pagina
-        for (this.i; this.i <= this.i + 5; this.i++) {
-          var a = res[this.i].intro;
-          this.srt = 'http://localhost:3000/' + res[this.i].imgUrl;
-          this.Imagen(this.srt, './Paginas/' + res[this.i]._id,a,res[this.i].title,res[this.i].ussename);
+        for (this.i; this.i <= this.i + 5; ) {
+          let titulo =res[this.i].title.toLowerCase()
+          if(((this.valor==res[this.i].like1 || this.valor==res[this.i].like2 || this.valor==res[this.i].like3 ||this.valor=="0" )&&this.titulo=="")
+          || (titulo.indexOf(this.titulo)>=0 &&this.titulo!="")){
+            var a = res[this.i].intro;
+            this.srt = 'http://localhost:3000/' + res[this.i].imgUrl;
+            this.Imagen(this.srt, './Paginas/' + res[this.i]._id,a,res[this.i].title,res[this.i].ussename);
+            }
+            this.i++
+
         }
       } else {
         this.Imagen("http://localhost:3000/Storage\\Notfound.png", "","Error","Error","Error");
@@ -79,7 +102,7 @@ export class Explorarcomponent implements OnInit {
       if (this.i + 5 <= this.h) {
         for (this.i; this.i <= this.i + 5; this.i++) {
           this.srt = 'http://localhost:3000/' + res[this.i].imgUrl;
-          this.Imagen(this.srt,  './Group/' + x[this.i]._id,x[this.i].Description,res[this.i].Name,res[this.i].Admins[0]);
+          this.Imagen(this.srt,  './Group/' + x[this.i]._id,x[this.i].Description,res[this.i].Name,res[this.i].ussename);
         }
       } else {
         this.Imagen("http://localhost:3000/Storage\\Notfound.png", "","Error","Error","Error");
@@ -101,11 +124,20 @@ export class Explorarcomponent implements OnInit {
     sector.id = "Homegenerator"
     document.getElementById("Homegenerator1").appendChild(sector);
     this.paginas();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var elems = document.querySelectorAll('select');
+      var instances = M.FormSelect.init(elems);
+    });
   }
 
   Imagen(a: string, id: string,b:string, title:string, autor:string) { //genra cada seccion 
     let mayorm = document.createElement("div");
-    mayorm.className="col s2"
+    mayorm.className=""
+    mayorm.style.marginLeft="1.42%"
+    mayorm.style.width="15%"
+    mayorm.style.height="30%"
+    mayorm.style.display="inline-block"
     document.getElementById("Homegenerator").appendChild(mayorm);
   
   

@@ -6,9 +6,21 @@ Name:String,
 Description:String,
 usserid:String,
 ussename:String,
-Admins:[String],
-Users:[String],
-publicgroup: [String]
+config:[String],
+
+Users:[{
+idUser:String,
+Name:String,
+Admin:String
+}],
+
+Public:[{
+    idUser:String,
+    Name:String,
+    cont:String,
+    imagen:String,
+    lDate:String
+}]
 
 });
 
@@ -18,9 +30,22 @@ Name:string;
 Description:string;
 usserid:string;
 ussename:string;
-Admins:[string];
-Users:[string];
-publicgroup:[string];
+config:[string];
+
+Users:[{
+idUser:string;
+Name:string;
+Admin:string;
+}];
+
+Public:[{
+    idUser:string;
+    Name:string;
+    cont:string;
+    imagen:string;
+    lDate:string;
+}]
+
 }
 
 export default model<IGroup>('Groups',GroupSchema)//envia la estructura a mongo

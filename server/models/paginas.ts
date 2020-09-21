@@ -15,9 +15,12 @@ views:Number,
 like:Number,
 Texto:[String],
 imgUrlB:[String],
+videos:[String],
+orden:[String],
 idCreador:[String],
 Creador:[String],
 com:[String],
+likeid:[String]
 
 });
 
@@ -35,9 +38,11 @@ export interface Ipaginas extends Document{
     datacreate:string;
     Texto:[string];
     imgUrlB:[string];
+    videos:[string];
+    orden:[string];
     //Datos de la pag en cuanto a tendencia
-    views:number;
     like:number;
+    likeid:[string];
     //Abajo --- Todo relacionado a comentarios
     idCreador:[string];
     Creador:[string];

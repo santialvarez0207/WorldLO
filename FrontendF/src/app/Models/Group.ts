@@ -5,7 +5,19 @@ export interface Group {
     Description:string;
     usserid:string;
     ussename:string;
-    Admins:Array<string>;
-    Users:Array<string>;
-    publicgroup:Array<string>;
+    config:Array<string>;
+    
+    Users:Array<{
+    idUser:string;
+    Name:string;
+    Admin:string;
+    }>;
+    
+    Public:Array<{
+        idUser:string;
+        Name:string;
+        cont:string;
+        imagen:string;
+        lDate:string;
+    }>;
 }

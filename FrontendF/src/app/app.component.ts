@@ -24,9 +24,14 @@ export class AppComponent {
     var a;
     a = localStorage.getItem("id");
     if (a == '' || a == null) {
+      let boton = document.getElementById("Ms")
+      boton.style.visibility = "hidden"
       this.noLoga();
     } else {
       this.Loga();
+        let boton = document.getElementById("Ms")
+        boton.style.visibility = "visible"
+      
     }
   };
   

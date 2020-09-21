@@ -79,7 +79,7 @@ window.location.replace("./Usuarios")
 
   addpages(title:string,intro:string){ // enviar los datos a la base de datos
     if (this.state == false){
-  this.groupService.postGroup(title,intro, localStorage.getItem("id"),localStorage.getItem("name"),this.file,[localStorage.getItem("id")],[localStorage.getItem("id")],null,[0,0,-1]).subscribe(res =>{ 
+  this.groupService.postGroup(title,intro, localStorage.getItem("id"),localStorage.getItem("name"),this.file).subscribe(res =>{ 
 console.log(res)
  });
  M.toast({html:'Group create :b'});

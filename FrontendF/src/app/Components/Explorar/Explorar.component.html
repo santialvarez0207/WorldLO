@@ -10,6 +10,33 @@
     style="color:white;  background:#3c0074;" >Pages</button>
 </div>
     </div>
+    <div class="row" style="margin-left: 10%; width: 80% ; color: #3c0074; ">
+
+        <div class="input-field col s8">
+            <input type="text" name="title" id="title" placeholder="Enter title of the article"
+                class="materialize-textarea">
+        </div>
+
+
+        <div class="input-field col s2">
+          <select id="categoria">
+            <option value="0">none</option>
+            <option value="1">Math</option>
+            <option value="2">languaje</option>
+            <option value="3">Math</option>
+            <option value="4">Fisic</option>
+            <option value="5">Biology</option>
+            <option value="6">Astronomy</option>
+            <option value="7">Technology</option>
+            <option value="8">Human</option>
+            <option value="9">Art</option>
+          </select>
+          <label>Categoria</label>
+        </div>
+        <a class="waves-effect waves-light btn col s2"   style="color:white;  background:#3c0074; margin-top: 20px;"(click)="clasificacion()">buscar</a>
+      </div>
+
+
     <div id="Homegenerator1" class="row" ></div>
     
     <button  (click)="Prueba1()" class="Boton" >

@@ -69,9 +69,9 @@ register(){
   let x,y,z;
   x=<HTMLInputElement>document.getElementById("email");
   y=<HTMLInputElement>document.getElementById("password");
-  y=<HTMLInputElement>document.getElementById("name");
+  z=<HTMLInputElement>document.getElementById("name");
   
-  this.adduser(z,y,x);
+  this.verificacion(z,y,x);
 
 }
 

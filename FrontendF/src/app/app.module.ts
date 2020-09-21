@@ -20,6 +20,10 @@ import { AboutusComponent } from './Components/aboutus/aboutus.component';
 
 import { OrganizerComponent } from './components/organizer/organizer.component';
 
+import { DeathStarComponent } from './components/death-star/death-star.component';
+import { ChatComponent } from './Components/chat/chat.component';
+import { DebateComponent } from './components/debate/debate.component';
+import { VerdebateComponent } from './components/verdebate/verdebate.component';
 
 
 //modulos que utilizaran los diferentes archivos o sectores
@@ -39,6 +43,10 @@ import { OrganizerComponent } from './components/organizer/organizer.component';
     GVisualizecomponent,
     AboutusComponent,
     OrganizerComponent,
+    DeathStarComponent,
+    ChatComponent,
+    DebateComponent,
+    VerdebateComponent,
   ],
   //modulos
   imports: [
