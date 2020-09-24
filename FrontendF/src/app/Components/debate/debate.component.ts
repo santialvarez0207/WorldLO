@@ -76,6 +76,7 @@ hola(Video){
  x.src=this.media.video
 }
 }
+
 envio(){
   let  canvas= <HTMLCanvasElement> document.getElementById("video")
   this.socketService.video({
