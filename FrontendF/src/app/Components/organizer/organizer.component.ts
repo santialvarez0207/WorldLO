@@ -74,16 +74,15 @@ export class OrganizerComponent implements OnInit {
 
     verificarExistencia(){
       this.ServiceNote.getUSerNote(localStorage.getItem("id"))
-       .subscribe(res => {
+        .subscribe(res => {
          this.User = res as NoteModel
+         if(this.User){
+          return true;
+          
+        }else{
+          this.crearUserNote()
+        }
        })
-      console.log(this.User)
-      
-      if(this.ServiceNote.getUSerNote(localStorage.getItem("id"))._isScalar){
-        return true;
-      }else{
-        return false;
-      }
     }
     
     crearUserNote(){
@@ -107,6 +106,8 @@ export class OrganizerComponent implements OnInit {
       NoteSelect.color = ValorcolorOfNote
       NoteSelect.id_note= Math.round(Math.random()*10000)
       console.log(NoteSelect)
+      
+      
       let User = new NoteModel
       User._id = localStorage.getItem("id")
       User.notes= [NoteSelect]
@@ -114,16 +115,78 @@ export class OrganizerComponent implements OnInit {
         User.colors= [ValorcolorOfNote]
       }
       console.log(User)
-      this.ServiceNote.postEmployee(User)
-        .subscribe(res => {console.log(res)})
-    }
-    addNote(){
-      
-      if(this.verificarExistencia()){
+      this.ServiceNote.postUserNote(User)
+        .subscribe(res => {console.log(res)
+          this.CreateNoteHTML(NoteSelect)
+          this.cerrar()
+        })
         
-      }else{
+      
+    }
+
+    putUserNote(){
+      const ValorTitle= (<HTMLInputElement>document.getElementById("Title")).value;
+      const ValorDescription = (<HTMLInputElement>document.getElementById("description")).value;
+      const ValorTimeInicial= (<HTMLInputElement>document.getElementById("TimeInicial")).value;
+      const ValorTimeFinal= (<HTMLInputElement>document.getElementById("TimeFinal")).value;
+      const ValorcolorOfNote= (<HTMLInputElement>document.getElementById("colorOfNote")).value;
+    }
+
+    CreateNoteHTML(Note: Note){
+
+
+      let Divcard = document.createElement("div");
+      Divcard.style.margin = "4px 2% 4px 2%";
+      Divcard.style.width = "96%";
+      Divcard.style.backgroundColor = Note.color;
+      Divcard.className = "card";
+      
+
+
+      let DivTitulo = document.createElement("div");
+      DivTitulo.style.width = "100%";
+      DivTitulo.style.backgroundColor = Note.color;
+      DivTitulo.className= "card-content"
+      let spanTitulo = document.createElement("span");
+      spanTitulo.className = "card-title activator grey-text text-darken-4";
+      let contenidoDivTitulo = document.createTextNode(Note.Title)
+      spanTitulo.appendChild(contenidoDivTitulo);
+      DivTitulo.appendChild(spanTitulo)
+      
+      let Divfecha = document.createElement("div");
+      Divfecha.style.width = "100%";
+      Divfecha.style.margin = "4px 0px 4px 0px";
+      Divfecha.style.backgroundColor = Note.color;
+      Divfecha.className = "card-title activator grey-text text-darken-4";
+      let contenidoHora = document.createTextNode(" de " + Note.initial_time + " a " + Note.final_time)
+      Divfecha.appendChild(contenidoHora );
+      DivTitulo.appendChild(Divfecha)
+      Divcard.appendChild(DivTitulo)
+
+      let Divdescription = document.createElement("div")
+      Divdescription.className = "card-reveal"
+      let spandescription = document.createElement("p")
+      spandescription.style.width = "96%";
+      spandescription.style.margin = "4px 2% 4px 2%";
+      spandescription.className = "card-revealgrey-text text-darken-4 "
+      let contenido = document.createTextNode(Note.description)
+      spandescription.appendChild(contenido)
+      Divdescription.appendChild(spandescription)
+      Divcard.appendChild(Divdescription)
+
+      const bandeja= document.getElementById("bandeja")
+      bandeja.appendChild(Divcard)
+    }
+
+    comakk(dia:Number){
+      const bandeja= document.getElementById("bandeja")
+      if(dia==0){
 
       }
+    } 
+
+    addNote(){
+      this.verificarExistencia()
     }
 
 

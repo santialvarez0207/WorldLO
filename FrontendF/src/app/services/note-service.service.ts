@@ -16,19 +16,17 @@ export class NoteServiceService {
     this.SelecteNote= new Note()
   }
 
-  getUSerNote(Userid:string){
+   getUSerNote(Userid:string){
     let URL= this.URL_API +`/${Userid}`
-    console.log(URL)
-    console.log(this.http.get(URL))
-  return this.http.get(URL);
+    return this.http.get(URL);
   }
 
-  postEmployee(UserNote:NoteModel) {
+  postUserNote(UserNote:NoteModel) {
     console.log(UserNote)
     return this.http.post(this.URL_API, UserNote);
   }
 
-  putEmployee(UserNote:NoteModel) {
+  putNore(UserNote:NoteModel) {
     let URL= this.URL_API + `/${UserNote._id}`
     return this.http.put(URL, UserNote);
   }
