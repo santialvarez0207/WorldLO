@@ -1,0 +1,147 @@
+<!-- formularios -->
+<div  class="Cuestionario"
+style="color: #3c0074; margin-top: 4%; margin-left: 25%">
+
+
+  <div class="card z-depth-3" style="width: 70%; height: 100%">
+    <h3>Request permits</h3>
+
+    <div class="row">
+      <h5 style="margin-left: 1%" class="col s1">Name:</h5>
+      <div class="input-field col s3">
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Name"
+          class="materialize-textarea"
+        />
+      </div>
+      <h5 style="margin-left: 1%" class="col s2">Surname's:</h5>
+      <div class="input-field col s5">
+        <input
+          type="text"
+          name="name"
+          id="sur"
+          placeholder="Surname's"
+          class="materialize-textarea"
+        />
+      </div>
+      <h5 style="margin-left: 1%" class="col s2">Mail:</h5>
+      <div class="input-field col s9">
+        <input
+          type="text"
+          name="name"
+          id="mail"
+          placeholder="Mail"
+          class="materialize-textarea"
+        />
+      </div>
+      <h5 style="margin-left: 1%" class="col s2">Studies:</h5>
+      <div class="input-field col s9">
+        <input
+          type="text"
+          name="name"
+          id="stu"
+          placeholder="Studies"
+          class="materialize-textarea"
+        />
+      </div>
+      <h5 style="margin-left: 1%" class="col s2">Url page university:</h5>
+      <div class="input-field col s9">
+        <input
+          type="text"
+          name="name"
+          id="url"
+          placeholder="Studies"
+          class="materialize-textarea"
+        />
+      </div>
+      <h5 style="margin-left: 1%" class="col s2">Job:</h5>
+      <div class="input-field col s9">
+        <input
+          type="text"
+          name="name"
+          id="job"
+          placeholder="Job"
+          class="materialize-textarea"
+        />
+      </div>
+      <h5 style="margin-left: 1%" class="col s1">Country:</h5>
+      <div class="input-field col s3">
+        <input
+          type="text"
+          name="name"
+          id="cou"
+          placeholder="Country"
+          class="materialize-textarea"
+        />
+      </div>
+      <h5 style="margin-left: 1%" class="col s2">Direction:</h5>
+      <div class="input-field col s5">
+        <input
+          type="text"
+          name="dir"
+          id="dir"
+          placeholder="Direction"
+          class="materialize-textarea"
+        />
+      </div>
+      <h5 style="margin-left: 1%" class="col s2">Phone:</h5>
+      <div class="input-field col s9">
+        <input
+          type="text"
+          name="name"
+          id="pho"
+          placeholder="Phone"
+          class="materialize-textarea"
+        />
+      </div>
+      <div style="margin-left: 2%">
+        <label>
+          <input type="checkbox"  id="18"/>
+          <span>+18 Years</span>
+        </label>
+      </div>
+
+      <div style="display: block">
+        <div>
+          <h5 style="margin-left: 1%" class="col s3" >
+            identification document (front):
+          </h5>
+        </div>
+        <div class="col s9" style="margin-top: 2%">
+          <input type="file" name="name" id="i1" />
+        </div>
+      </div>
+      <div style="display: block">
+        <div>
+          <h5 style="margin-left: 1%" class="col s3">
+            identification document (Behind):
+          </h5>
+        </div>
+        <div class="col s9" style="margin-top: 2%">
+          <input type="file" name="name" id="i2" />
+        </div>
+      </div>
+      <div style="display: block">
+        <div>
+          <h5 style="margin-left: 1%" class="col s3">
+            graduation certificate:
+          </h5>
+        </div>
+        <div class="col s9" style="margin-top: 2%">
+          <input type="file" name="name" id="i3" />
+        </div>
+      </div>
+    </div>
+    <button
+      class="btn waves-effect waves-light"
+      style="background-color: #3c0074; margin-left: 2%"
+      (click)="send()"
+    >
+      Submit
+      <i class="material-icons right">send</i>
+    </button>
+  </div>
+</div>

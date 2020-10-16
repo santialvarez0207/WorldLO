@@ -1,0 +1,179 @@
+<br><br><br>
+<div id=etapa2>
+
+  <div class="row">
+    <h5 style="margin-left: 1%" class="col s1">Key:</h5>
+    <div class="input-field col s3">
+      <input
+        type="text"
+        name="name"
+        id="Key"
+        placeholder="Key"
+        class="materialize-textarea"
+      />
+    </div>
+  </div>
+  <button
+  class="btn waves-effect waves-light"
+  style="background-color: #3c0074; margin-left: 2%" (click)="ingresar()"
+>
+Send
+  <i class="material-icons right">send</i>
+</button>
+
+</div>
+
+
+
+<div id="etapa1">
+    <button data-target="sector111" id="sector11" class="btn modal-trigger"
+    style=" margin-Left:2% ; background-color: #3c0074; display: inline-block; width: 20%;">dates</button>
+    <div class="card z-depth-3 col s12">
+        <table>
+            <thead>
+              <tr>
+                  <th>Name</th>
+                  <th>Last Name</th>
+                  <th>Time</th>
+                  <th>-</th>
+              </tr>
+            </thead>
+    
+            <tbody id="tablas">
+            </tbody>
+          </table>
+    </div>
+
+
+
+
+
+<div id="sector111" class="modal">
+    <div class="modal-content">
+        <div id= value></div>
+        <div id= valueu></div>
+        
+          <div class="card z-depth-3">
+            <h3>Request permits</h3>
+        
+            <div class="row">
+              <h5  class="col s1">Name:</h5>
+              <div class=" col s3">
+                <h5
+                  name="name"
+                  id="name"
+                >aaaaaaaaaaaaaaaaaaa</h5>
+
+              </div>
+              <h5  class="col s2">Surname's:</h5>
+              <div class=" col s6">
+                <h5
+                  name="name"
+                  id="sur"
+                  >aaaaaaaaaa</h5>
+              </div>
+              <h5  class="col s2">Mail:</h5>
+              <div class=" col s10">
+                <h5
+                  name="name"
+                  id="mail"
+                  
+                  >aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5>
+              </div>
+              <h5  class="col s2">Studies:</h5>
+              <div class=" col s10">
+                <h5
+                  name="name"
+                  id="stu"
+                  
+                  >aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5>
+              </div>
+              <h5  class="col s3">Url page university:</h5>
+              <div class=" col s9">
+                <h5
+                  name="name"
+                  id="url"
+                  
+                  >aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5>
+              </div>
+              <h5  class="col s3">Job:</h5>
+              <div class=" col s9">
+                <h5
+                  name="name"
+                  id="job"
+                  
+                  >aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5>
+              </div>
+              <h5  class="col s1">Country:</h5>
+              <div class=" col s3">
+                <h5
+                  name="name"
+                  id="cou"
+                  
+                  >aaaaaaaaaaaaaaaaa</h5>
+              </div>
+              <h5  class="col s2">Direction:</h5>
+              <div class=" col s5">
+                <h5
+                  name="dir"
+                  id="dir"
+                  
+                  >aaaaaaaaaaaaaaaaaaaaaaaa</h5>
+              </div>
+              <h5  class="col s2">Phone:</h5>
+              <div class=" col s9">
+                <h5
+                  name="name"
+                  id="pho"
+                  
+                  >aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h5>
+              </div>
+        
+
+                <div>
+                  <h5  class="col s5" >
+                    identification document (front):
+                  </h5>
+                </div>
+                <div class="col s7" style="margin-top: 2%">
+                    <img class="materialboxed" id="i1" width="100" src="https://www.adslzone.net/app/uploads/2019/04/borrar-fondo-imagen.jpg">
+                </div>
+                <div>
+                  <h5  class="col s5">
+                    identification document (Behind):
+                  </h5>>
+                <div class="col s7" style="margin-top: 2%">
+                    <img class="materialboxed"id="i2" width="100" src="https://www.adslzone.net/app/uploads/2019/04/borrar-fondo-imagen.jpg">
+                </div>
+              </div>
+
+                <div>
+                  <h5  class="col s5">
+                    graduation certificate:
+                  </h5>
+                </div>
+                <div class="col s7" style="margin-top: 2%">
+                    <img class="materialboxed"id="i3" width="100" src="https://www.adslzone.net/app/uploads/2019/04/borrar-fondo-imagen.jpg">
+                </div>
+            </div>
+          </div>
+          <button
+          class="btn waves-effect waves-light"
+          style="background-color: #3c0074; margin-left: 2%"
+          (click)="decidir(1)"
+        >
+        Accept
+          <i class="material-icons right">library_add_check</i>
+        </button>
+        <button
+        (click)="decidir(0)"
+        class="btn waves-effect waves-light"
+        style="background-color: #3c0074; margin-left: 2%"
+      >
+      Decline
+        <i class="material-icons right">
+            delete</i>
+      </button>
+        </div>
+    </div>
+</div>

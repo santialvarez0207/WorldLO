@@ -85,6 +85,7 @@ export class OrganizerComponent implements OnInit {
         return false;
       }
     }
+    
     crearUserNote(){
       const ValorTitle= (<HTMLInputElement>document.getElementById("Title")).value;
       console.log(ValorTitle)

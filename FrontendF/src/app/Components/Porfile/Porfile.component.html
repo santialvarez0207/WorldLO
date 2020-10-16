@@ -1,29 +1,39 @@
+<div class ="row"> 
+    <div  class ="col s2 card z-depth-3" style="height: 90vh; margin-top: 60px;color:  black; ">
+        <h1 style="text-align: center;">Options</h1>
+        <li class="divider"></li>
+        
 
-                    <form #usuarioForm="ngForm" (ngSubmit)="verificacion(name,password,mail)" class="Cuestionario">
-                        <h3>update</h3>
-                        <div class="row">
-                            <div class="input-field col s12" id="nombre">
-                            <input type="text" name="name" #name placeholder="Enter your name">
-                            </div>
-                            <div class="input-field col s12" id="Contraseña">
-                            <input type="password"  name="password" #password placeholder="Enter your password">
-                            </div>
-                            <div class="input-field col s12" id="Correo">
-                            <input type="text" name="mail" #mail placeholder="Enter your mail">
-                            </div>
-                            <div class="card-action">
-                            <div class="input-field- col s12">
-                            <button class="btn right"style="color:#ffc305;  background:#581845;">Save</button>
-                            </div>
-                        </div>
-                        </div>
-                    </form>
-                <div class="Cuestionario2">
-                <div id="lugar">
-                <h3>Nombre</h3>
-                </div>
-                <div id="lugar1" >
-                <h3>Correo</h3>
-                </div>
-                </div>
+
+        <h5 style="cursor: pointer;" (click)="porfile()">- Porfile </h5>
+        <h5 style="cursor: pointer;" (click)="friend()">- Friends </h5>
+        <h5 style="cursor: pointer;" (click)="MyGroups()">- My Groups </h5>
+        <h5 style="cursor: pointer;" (click)="MyPages()">- My Pages </h5>
+        <h5 style="cursor: pointer;" (click)="Groupsfavs()">- Favorite Groups </h5>
+        <h5 style="cursor: pointer;" (click)="pagesfav()">- Favorite Pages </h5>
+        <a href="/solicitar" style="color: black;"><h5  >- Apply for teacher</h5></a>
+        <a class="waves-effect waves-light btn col s4"   style="color:white;  background:#3c0074; margin-top: 20px;" (click)="Salir()">Close sesion</a>
+
+    </div>
+    
+    <div class="col s8 offset-s1 card z-depth-3"  style="height: 90vh; margin-top: 60px; overflow-y: scroll;"><div id="Sector"><div id="sector1"></div>
+    </div>
+    <button class="btn waves-effect waves-light" (click)="verificacion()"   style="color:white;  background:#3c0074; margin-top: 20px; "id="changeb">Change</button>
+    <button class="btn waves-effect waves-light" (click)="Solicitudes()"  style="color:white;  background:#3c0074; margin-top: 20px; " id="xd">Accept</button>
+    <div id="friend">
+        <div class="input-field col s8">
+            <input type="text" name="title" id="findfriends" placeholder="Enter title of the article"
+                class="materialize-textarea" >
+        </div>
+    <div>
+    <a class="waves-effect waves-light btn col s4"   style="color:white;  background:#3c0074; margin-top: 20px;" (click)="Buscaramigo()">Find</a>
+    </div>
+    </div>
+
+</div>
+    
+    
+    
+    
+    </div>
              

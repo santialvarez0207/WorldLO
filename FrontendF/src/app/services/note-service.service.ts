@@ -20,7 +20,7 @@ export class NoteServiceService {
     let URL= this.URL_API +`/${Userid}`
     console.log(URL)
     console.log(this.http.get(URL))
-    return this.http.get('${this.URL_API} /${Userid}');
+  return this.http.get(URL);
   }
 
   postEmployee(UserNote:NoteModel) {
