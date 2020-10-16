@@ -12,6 +12,7 @@
         <ul id="drop" class="dropdown-content" style=" background: #020690;">
           <li><a class="waves-effect waves-leght" [routerLink]="['Creacion']" style="color:white">Pages</a></li>
           <li><a class="waves-effect waves-leght" [routerLink]="['CExamenes']" style="color:white">Exam</a></li>
+          <li><a class="waves-effect waves-leght" [routerLink]="['Debate']" style="color:white">Debate</a></li>
           <li><a class="waves-leght" style="color:white" [routerLink]="['CreateGroup']">Groups </a></li>
         </ul>
       </li>
@@ -29,6 +30,7 @@
     <li class="divider" tabindex="-1"></li>
     <li><a [routerLink]="['Creacion']" style="color:white;">Pages</a></li>
     <li><a [routerLink]="['CExamenes']" style="color:white">Exam</a></li>
+    <li><a [routerLink]="['Debate']" style="color:white">Debate</a></li>
     <li><a style="color:white;" [routerLink]="['CreateGroup']">Groups </a></li>
     <li class="divider" tabindex="-1"></li>
     <div id="Encabezado2" class="down">
@@ -37,14 +39,15 @@
   </ul>
 </div>
 <br>
-<div style="left:90% ; top:85% ; position: fixed;" id="Ms" >
+
+<div style="left:90% ; top:85% ; position: fixed; z-index: 10;" id="Ms" >
   <span class="badge"style="color:black ;margin-left:-20px; margin-top: -10px; " id="notificaion"></span>
   <a class="btn-floating btn-large red">
-    <i class="large material-icons"  [routerLink]="['Chat']">chat</i>
+    <i class="large material-icons"  [routerLink]="['Chat']" style="background-color: #3c0074;" >chat</i>
   </a>
 </div>
 
-<router-outlet><!--Aca se muestra las paginas--></router-outlet>
+<router-outlet ><!--Aca se muestra las paginas--></router-outlet>
 <br><br>
 
 

@@ -1,13 +1,18 @@
-import { Component, OnInit, Output, EventEmitter, ɵCurrencyIndex } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  ɵCurrencyIndex,
+} from "@angular/core";
 import { PageService } from "../../services/Page.service"; //1
 import { UsuarioService } from "../../services/usuario.service";
-import { Page } from 'src/app/Models/Page';
-import { AppComponent } from '../../app.component';
-import { Router } from '@angular/router';
-import { Usuario } from 'src/app/Models/usuario';
-import { Imagenes } from 'src/app/Models/Imagenes';
+import { Page } from "src/app/Models/Page";
+import { AppComponent } from "../../app.component";
+import { Router } from "@angular/router";
+import { Usuario } from "src/app/Models/usuario";
+import { Imagenes } from "src/app/Models/Imagenes";
 import { ImagenesService } from "../../services/imagenes.service";
-
 
 declare var M: any;
 
@@ -16,10 +21,10 @@ interface HtmlInputEvent extends Event {
 }
 
 @Component({
-  selector: 'app-Creacion',
-  templateUrl: './Creacion.component.html',
-  styleUrls: ['./Creacion.component.css'],
-  providers: [PageService, UsuarioService, ImagenesService] //2
+  selector: "app-Creacion",
+  templateUrl: "./Creacion.component.html",
+  styleUrls: ["./Creacion.component.css"],
+  providers: [PageService, UsuarioService, ImagenesService], //2
 })
 export class Creacioncomponent implements OnInit {
   photoSelected: string | ArrayBuffer;
@@ -32,11 +37,18 @@ export class Creacioncomponent implements OnInit {
   orden: Array<string> = [];
   ii: number = 0;
   state: boolean = true;
-  constructor(public PageService: PageService, private router: Router, public usuarioService: UsuarioService, public imagenservice: ImagenesService) { } //3 son para definir que otros archivos estamos utilizando
+  constructor(
+    public PageService: PageService,
+    private router: Router,
+    public usuarioService: UsuarioService,
+    public imagenservice: ImagenesService
+  ) {} //3 son para definir que otros archivos estamos utilizando
 
-  ngOnInit(): void { // para cuando incia 
-    var a = localStorage.getItem("name")
-    this.usuarioService.getusuarios().subscribe(res => { // hace una verificacion si el usuario esta en la base de datos
+  ngOnInit(): void {
+    // para cuando incia
+    var a = localStorage.getItem("name");
+    this.usuarioService.getusuarios().subscribe((res) => {
+      // hace una verificacion si el usuario esta en la base de datos
       this.usuarioService.usuario = res as Usuario[];
       var h;
       var x: boolean = false;
@@ -46,32 +58,43 @@ export class Creacioncomponent implements OnInit {
         if (s == res[i]._id) {
           x = true;
           if (res[i].tipeuser != "1" && res[i].tipeuser != "2") {
-            M.toast({ html: 'Srry you need be a teacher for create a page srry  ' });
-            window.location.replace("./Home")
+            M.toast({
+              html: "Srry you need be a teacher for create a page srry  ",
+            });
+            window.location.replace("./Home");
           }
         }
       }
       if (x == false) {
-        M.toast({ html: 'In not database ' });
-        window.location.replace("./Home")
+        M.toast({ html: "In not database " });
+        window.location.replace("./Home");
         localStorage.setItem("name", "");
         localStorage.setItem("id", "");
-        localStorage.setItem("Correo", "")
+        localStorage.setItem("Correo", "");
       }
-    })
+    });
 
-    if (a == "") {
-      M.toast({ html: 'Srry you need stay register for create a new page :D' });
-      window.location.replace("./Usuarios")
+    if (a == "" || a == null) {
+      M.toast({ html: "Srry you need stay register for create a new page :D" });
+      window.location.replace("./Usuarios");
     }
+
+    let boton = document.getElementById("Ms");
+    boton.style.visibility = "hidden";
   }
 
-  onPhotoSelected(event: HtmlInputEvent): void { // para cargar una imagen
+  ngOnDestroy() {
+    let boton = document.getElementById("Ms");
+    boton.style.visibility = "visible";
+  }
+
+  onPhotoSelected(event: HtmlInputEvent): void {
+    // para cargar una imagen
     if (event.target.files && event.target.files[0]) {
       this.file = <File>event.target.files[0];
       // image preview
       const reader = new FileReader();
-      reader.onload = e => this.photoSelected = reader.result;
+      reader.onload = (e) => (this.photoSelected = reader.result);
       reader.readAsDataURL(this.file);
     }
   }
@@ -79,166 +102,183 @@ export class Creacioncomponent implements OnInit {
   addpages() {
     //se envia el contenido a la base de datos
 
-    var a: Array<string> = [], c: Array<string> = [], b: Array<File> = [];
+    var a: Array<string> = [],
+      c: Array<string> = [],
+      b: Array<File> = [];
 
-    var title = <HTMLInputElement>document.getElementById("title")
-    var intro = <HTMLTextAreaElement>document.getElementById("intro")
-    var cont = <HTMLTextAreaElement>document.getElementById("cont")
-    var like1 = <HTMLSelectElement>document.getElementById("like1")
-    var like2 = <HTMLSelectElement>document.getElementById("like2")
-    var like3 = <HTMLSelectElement>document.getElementById("like3")
-
+    var title = <HTMLInputElement>document.getElementById("title");
+    var intro = <HTMLTextAreaElement>document.getElementById("intro");
+    var cont = <HTMLTextAreaElement>document.getElementById("cont");
+    var like1 = <HTMLSelectElement>document.getElementById("like1");
+    var like2 = <HTMLSelectElement>document.getElementById("like2");
+    var like3 = <HTMLSelectElement>document.getElementById("like3");
 
     for (var i = 0; i <= this.contador - 2; i++) {
-      let x = <HTMLTextAreaElement>document.getElementById("Parrafe-" + (1 + i));
+      let x = <HTMLTextAreaElement>(
+        document.getElementById("Parrafe-" + (1 + i)) //toma los parrafos, se agrega el valor a un arreglo
+      );
       a[i] = x.value;
-      console.log(x.value)
+      console.log(x.value);
     }
     for (var i = 0; i <= this.video - 2; i++) {
       let x = <HTMLTextAreaElement>document.getElementById("video-" + (1 + i));
-      c[i] = "https://www.youtube.com/embed/" + x.value.slice(32, 45);;
-      console.log(c[i])
+      c[i] = "https://www.youtube.com/embed/" + x.value.slice(32, 43);
+      //cambia la url del video, para que sea apto para la pagina
+      console.log(c[i]);
     }
-
 
     for (var i = 1; i <= this.imag - 1; i++) {
-      let x = <HTMLInputElement>document.getElementById("imagen-" + i)
-      b[i-1] = x.files[0];
+      let x = <HTMLInputElement>document.getElementById("imagen-" + i);
+      b[i - 1] = x.files[0]; //carga las imagnes y las guarda
     }
 
-    this.imagenservice.postImagenes(b, this.imag - 1).subscribe(res => {
+    this.imagenservice.postImagenes(b, this.imag - 1).subscribe((res) => {
       let ids = res as Imagenes;
-      console.log(ids)
+      console.log(ids);
       for (var i = 0; i <= this.imag - 2; i++) {
         this.img[i] = ids.U[i].path;
       }
-      this.PageService.postPagina(title.value, intro.value, localStorage.getItem("id"), localStorage.getItem("name"), like1.value, like2.value, like3.value, cont.value,
-        this.file, a, c, this.orden, this.img, [this.contador, this.video, this.imag, this.ii]).subscribe(res => {
-          M.toast({ html: 'Page create :b' });
-        });
-    })
 
-
+      this.PageService.postPagina(
+        title.value,
+        intro.value,
+        localStorage.getItem("id"),
+        localStorage.getItem("name"),
+        like1.value,
+        like2.value,
+        like3.value,
+        cont.value,
+        this.file,
+        a,
+        c,
+        this.orden,
+        this.img,
+        [this.contador, this.video, this.imag, this.ii]
+      ).subscribe((res) => {
+        M.toast({ html: "Page create :b" });
+      });
+    });
   }
 
-
-  AgregarParrafo() { // agrega un parrafo
-    let n = document.createElement('div');
+  AgregarParrafo() {
+    // agrega un parrafo
+    let n = document.createElement("div");
     n.id = "BoxParrafe" + (1 + this.contador);
     n.className = "card z-depth-3";
-    n.style.color = "#3c0074"
-    n.style.width = "70%"
+    n.style.color = "#3c0074";
+    n.style.width = "70%";
     document.getElementById("sector").appendChild(n);
-    let t = document.createElement('h3');
-    t.textContent = "Parrafe " + (1 + this.contador);
-    t.style.left = "2%"
-    t.style.color = "#3c0074"
-    t.style.width = "70%"
+    let t = document.createElement("h3");
+    t.textContent = "Paragraph " + (1 + this.contador);
+    t.style.left = "2%";
+    t.style.color = "#3c0074";
+    t.style.width = "70%";
     n.appendChild(t);
-    let a = document.createElement('textarea');
-    a.style.width = "100%"
+    let a = document.createElement("textarea");
+    a.style.width = "100%";
     a.className = "materialize-textarea";
-    a.id = "Parrafe-" + (this.contador);
-    a.style.left = "2%"
-    a.placeholder = "Incert the question o point of the exam"
-    a.style.color = "#3c0074"
+    a.id = "Parrafe-" + this.contador;
+    a.style.left = "2%";
+    a.placeholder = "Incert new Paragraph";
+    a.style.color = "#3c0074";
     n.appendChild(a);
     this.contador++;
-    this.ordenfuction(1, "1")
+    this.ordenfuction(1, "1");
   }
 
-  EliminarParrafo() {//elimina un parrafo
-    let y = document.getElementById("BoxParrafe" + (this.contador));
-    y.remove()
+  EliminarParrafo() {
+    //elimina un parrafo
+    let y = document.getElementById("BoxParrafe" + this.contador);
+    y.remove();
     this.contador--;
-    this.ordenfuction(2, "1")
+    this.ordenfuction(2, "1");
   }
 
-  AgregarImagen() { // agrega para subir una imagen
-    let n = document.createElement('div');
+  AgregarImagen() {
+    // agrega para subir una imagen
+    let n = document.createElement("div");
     n.id = "BoxImagen" + (1 + this.imag);
     n.className = "card z-depth-3";
-    n.style.color = "#3c0074"
-    n.style.width = "70%"
+    n.style.color = "#3c0074";
+    n.style.width = "70%";
     document.getElementById("sector").appendChild(n);
-    let t = document.createElement('h3');
+    let t = document.createElement("h3");
     t.textContent = "Imagen " + (1 + this.imag);
-    t.style.left = "2%"
-    t.style.color = "#3c0074"
-    t.style.width = "70%"
+    t.style.left = "2%";
+    t.style.color = "#3c0074";
+    t.style.width = "70%";
     n.appendChild(t);
-    let a = document.createElement('input');
-    a.style.width = "100%"
-    a.type = "file"
+    let a = document.createElement("input");
+    a.style.width = "100%";
+    a.type = "file";
     a.className = "materialize-textarea";
-    a.id = "imagen-" + (this.imag);
-    a.style.left = "2%"
-    a.placeholder = "Incert the question o point of the exam"
-    a.style.color = "#3c0074"
+    a.id = "imagen-" + this.imag;
+    a.style.left = "2%";
+    a.placeholder = "Incert link video youtube";
+    a.style.color = "#3c0074";
     n.appendChild(a);
     this.imag++;
-    this.ordenfuction(1, "2")
+    this.ordenfuction(1, "2");
   }
 
-  Agregarvideo() { // agrega un parrafo
-    let n = document.createElement('div');
-    n.id = "Boxvideo" + (this.video);
+  Agregarvideo() {
+    // agrega un parrafo
+    let n = document.createElement("div");
+    n.id = "Boxvideo" + (this.video + 1);
     n.className = "card z-depth-3";
-    n.style.color = "#3c0074"
-    n.style.width = "70%"
+    n.style.color = "#3c0074";
+    n.style.width = "70%";
     document.getElementById("sector").appendChild(n);
-    let t = document.createElement('h3');
+    let t = document.createElement("h3");
     t.textContent = "video " + (1 + this.video);
-    t.style.left = "2%"
-    t.style.color = "#3c0074"
-    t.style.width = "70%"
+    t.style.left = "2%";
+    t.style.color = "#3c0074";
+    t.style.width = "70%";
     n.appendChild(t);
-    let a = document.createElement('textarea');
-    a.style.width = "100%"
+    let a = document.createElement("textarea");
+    a.style.width = "100%";
     a.className = "materialize-textarea";
-    a.id = "video-" + (this.video);
-    a.style.left = "2%"
-    a.placeholder = "Incert the question o point of the exam"
-    a.style.color = "#3c0074"
+    a.id = "video-" + this.video;
+    a.style.left = "2%";
+    a.placeholder = "Incert the question o point of the exam";
+    a.style.color = "#3c0074";
     n.appendChild(a);
     this.video++;
-    this.ordenfuction(1, "3")
+    this.ordenfuction(1, "3");
   }
 
-
-  Eliminarvideo() {//elimina un parrafo
-    let y = document.getElementById("Boxvideo" + (this.video));
-    y.remove()
+  Eliminarvideo() {
+    //elimina un parrafo
+    console.log("Boxvideo" + this.video);
+    let y = document.getElementById("Boxvideo" + this.video);
+    y.remove();
     this.video--;
-    this.ordenfuction(2, "3")
+    this.ordenfuction(2, "3");
   }
 
-  EliminarImagen() {// agrega para eliminar una pagina
-    let y = document.getElementById("BoxImagen" + (this.imag));
-    y.remove()
+  EliminarImagen() {
+    // agrega para eliminar una pagina
+    let y = document.getElementById("BoxImagen" + this.imag);
+    y.remove();
     this.imag--;
-    this.ordenfuction(2, "2")
+    this.ordenfuction(2, "2");
   }
 
   ordenfuction(a: number, b: string) {
     if (a == 1) {
       this.orden[this.ii] = b;
       this.ii++;
-    }
-    else {
+    } else {
       var state: boolean = false;
       for (var i = this.ii; i >= 0; i--) {
         if (this.orden[i] == b && state == false) {
           for (var r = i; r <= this.ii - 1; r++) {
-            this.orden[r] = this.orden[r + 1]
+            this.orden[r] = this.orden[r + 1];
           }
           this.ii--;
           state = true;
         }
-
       }
     }
   }
-
-
 }

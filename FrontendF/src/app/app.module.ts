@@ -22,6 +22,8 @@ import { DeathStarComponent } from './components/death-star/death-star.component
 import { ChatComponent } from './Components/chat/chat.component';
 import { DebateComponent } from './components/debate/debate.component';
 import { VerdebateComponent } from './components/verdebate/verdebate.component';
+import { CrearsolisComponent } from './components/crearsolis/crearsolis.component';
+import { AdministradorComponent } from './components/administrador/administrador.component';
 
 
 //modulos que utilizaran los diferentes archivos o sectores
@@ -45,6 +47,8 @@ import { VerdebateComponent } from './components/verdebate/verdebate.component';
     ChatComponent,
     DebateComponent,
     VerdebateComponent,
+    CrearsolisComponent,
+    AdministradorComponent,
   ],
   //modulos
   imports: [

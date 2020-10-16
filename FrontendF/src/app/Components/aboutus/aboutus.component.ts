@@ -1,45 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 declare var M: any;
 @Component({
-  selector: 'app-aboutus',
-  templateUrl: './aboutus.component.html',
-  styleUrls: ['./aboutus.component.css']
+  selector: "app-aboutus",
+  templateUrl: "./aboutus.component.html",
+  styleUrls: ["./aboutus.component.css"],
 })
 export class AboutusComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.parallax');
+    document.addEventListener("DOMContentLoaded", function () {
+      var elems = document.querySelectorAll(".parallax");
       var instances = M.Parallax.init(elems);
     });
 
-    var elem = document.querySelector('.collapsible.expandable');
+    var elem = document.querySelector(".collapsible.expandable");
     var instance = M.Collapsible.init(elem, {
-      accordion: false
+      accordion: false,
     });
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.slider');
+    document.addEventListener("DOMContentLoaded", function () {
+      var elems = document.querySelectorAll(".slider");
       var instances = M.Slider.init(elems);
     });
-    
 
-    var elem = document.querySelector('.collapsible.expandable');
+    var elem = document.querySelector(".collapsible.expandable");
     var instance = M.Collapsible.init(elem, {
-      accordion: false
+      accordion: false,
     });
-    document.addEventListener('DOMContentLoaded', function() {
-      var elems = document.querySelectorAll('.materialboxed');
+
+    document.addEventListener("DOMContentLoaded", function () {
+      var elems = document.querySelectorAll(".materialboxed");
       var instances = M.Materialbox.init(elems);
     });
 
-
-    
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems);
-  });
-
-}
+    document.addEventListener("DOMContentLoaded", function () {
+      var elems = document.querySelectorAll(".modal");
+      var instances = M.Modal.init(elems);
+    });
+  }
 }
