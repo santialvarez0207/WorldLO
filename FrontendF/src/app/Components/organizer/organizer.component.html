@@ -4,7 +4,7 @@
 <section>
     <article class="panel-creacion center z-depth-4">
         <div class="panel-C-A bordes center">
-            <button href="" class="btn waves-effect waves-leght Bcrear" id="create_note"> create note 
+            <button  class="btn waves-effect waves-leght Bcrear" id="create_note"> create note 
             </button>
         </div>
         <hr>
@@ -85,36 +85,62 @@
     </article>
 </section>
 <aside>
-    <p class="titulo_aside">VIDEOS DE APOYO</p>
+    <p class="titulo_aside"></p>
     <hr>
     <div style=" color: #ffffff; margin: 5%;">
-    <a href="https://www.youtube.com/watch?v=bPMJGQ3PH5M">Cómo organizar tu tiempo y tener mejores resultados | Mistim</a>
+
     </div>
 </aside>
 
 
 
-<!-- <div class="overlay" id="overlay">
-    <div class="pop_up z-depth-5">
-        <form action="">
-            <div class="card-panel caja_informacion-note z-depth-5 ">
-                <div class="input-field">
-                    <label for="title" >note title</label>
-                    <input  id="title" type="text" class="validate">
-                </div>
-           
-                <div class=" input-field col s6">
-                    <i class="material-icons prefix">description</i>
-                    <textarea id="description" class="text  materialize-textarea" data-length="120"></textarea>
-                    <label for="description">description</label>
-                </div>
-            </div>
-        
-            <div class="caja_estilos-note ">
+<div class="overlay" id="overlay">
 
-        
+    <div class="pop_up z-depth-5">
+        <button class="btn btn-cerrar-pop_up right white" id="cerrar-pop_up"> <i class="material-icons"> close </i></button>
+
+            <div class="caja_informacion-note card-panel z-depth-5 ">
+                <div class="caja-textos">
+                    
+                    <div class="input-field">
+                        <label for="Title" >note title</label>
+                        <input  id="Title" type="text" class="validate">
+                    </div>
+           
+                    <div class=" input-field col s6">
+                        <i class="material-icons prefix">description</i>
+                        <textarea id="description" id="description" class="text  materialize-textarea" maxlength="200"></textarea>
+                        <label for="description">description</label>
+                    </div>
+               
+                </div>
+                <p>activation time:</p>
+               
+                <div class= "Caja-Time bottom">
+                    <div class=" input-field input-Time">
+                        <input type="time" id="TimeInicial" >
+                        <label for="TimeInicial"> start time </label>
+                    </div>
+
+                    <div class=" input-field input-Time">
+                        <input type="time" id="TimeFinal">
+                        <label for="TimeFinal"> final time </label>
+                    </div>
+                </div>
             </div>
-        </form>
+        
+            <div class="caja_estilos-note">
+                <br>
+                <label for="colorOfNote"> Note color: </label>
+                <input id="colorOfNote" type="color" value="#ffffff" id="colorOfNote">
+                <hr style=" margin: 15px 0px 5px 0px;">
+                <p> previously used colors: </p>
+                <div class="colorsSaved">
+
+                </div>
+                <button class="btn-crear" (click)="addNote()"> create </button>   
+            </div>
+
     </div>
 </div>
-</div> -->
+</div>

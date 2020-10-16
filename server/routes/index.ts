@@ -11,6 +11,7 @@ import { getGroup, createGroup, getGroups, deleteGroup, updateGroup } from '../c
 import { getPublicG, createPublicG, getPublicGs, updatePublicG, deletePublicG } from '../controllers/PublicG.controller';
 import { getImagenes, createImagenes, getImageness, updateImagenes, deleteImagenes } from '../controllers/imagenes.controller';
 import { getVideo, createVideo, getVideos, updateVideo, deleteVideo } from '../controllers/video.controller';
+import { createUserNote, UpdateUserNote, GetUserNote } from '../controllers/UserNotes.controller';
 // rutas----
 router.route('/Usuarios')
     .get(getUsers)
@@ -83,6 +84,11 @@ router.route('/debate/:id')
     .get(getVideo)
     .put(updateVideo);
 
-
+//Notes------------------------------------------    
+router.route('/Note')
+    .post(createUserNote)
+router.route('/Note/:id')
+    .get(GetUserNote)
+    .put(UpdateUserNote);
 
 export default router;
