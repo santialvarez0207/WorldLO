@@ -53,10 +53,17 @@ panel izquierdo de creacion
     margin: 4% 4% 2% 4%;
     width: 92%;
     height: 65%;
+    max-height: 415px ;
+    overflow-y: scroll;
     background-color: #3c0074;
-    opacity: 0.5;
+    opacity: 0.8;
 }
-
+.panel-C-B::-webkit-scrollbar{
+    width: 7px;
+}
+.panel-C-B::-webkit-scrollbar-thumb{
+    background: #7232f2;
+}
 
 /*--------------------------------------------------------------------------
 panel central de organizacion
@@ -86,10 +93,16 @@ panel central de organizacion
     width: 96%;
     height: 80%;
     margin: 4% 2% 0% 2%;
-    background-color: #ffffff;
-    opacity: 0.2;
+    opacity: 0.9;
+    overflow-y: scroll;
+    padding: 10px 0px 0px 0px;
 }
-
+.drop_here::-webkit-scrollbar{
+    width: 7px;
+}
+.drop_here::-webkit-scrollbar-thumb{
+    background: #7232f2;
+}
 
 
 /*--------------------------------------------------------------------------
@@ -237,9 +250,19 @@ ventana emergente
 .material-icons{
     color: #020690;
 }
+
+/*--------------------------------------------------------------------------
+Note creada
+--------------------------------------------------------------------------*/
+.idNote{
+    position: relative; 
+    top: 5px;
+    visibility: hidden;
+}
 /*--------------------------------------------------------------------------
 elementos 
 --------------------------------------------------------------------------*/
+
 hr{
 
     background-color: #20115b;

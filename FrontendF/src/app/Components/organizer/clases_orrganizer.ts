@@ -4,7 +4,7 @@ export class establecer_fecha{
     private mes = this.fecha.getMonth()
     private diaDelMes = this.fecha.getDate()
     public año = this.fecha.getFullYear()
-    
+    public solo_diames:Array<number> = [this.diaDelMes]
 
     //--------------------------------funciones----------------------------
   
@@ -84,11 +84,13 @@ export class establecer_fecha{
     if( ((this.mes == 0||2||4||6||7||9||11) && (dia == 32))||((this.mes != 0||2||4||6||7||9||11) && (dia == 30))){
         dia = 1
         texto= (dia + i) + " de " + meses[i+1]
+        this.solo_diames.push(dia+i)
         textos.push(texto)
         
     }else{ 
         dia++
         texto= (dia) + " de " + meses[i]
+        this.solo_diames.push(dia)
         textos.push(texto)}
         }    
     return textos;
